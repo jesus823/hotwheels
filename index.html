@@ -89,15 +89,18 @@
       display: none;
     }
 
-    #mensaje-no-encontrado {
-      display: none;
-      text-align: center;
-      font-size: 20px;
-      color: red;
-      margin-top: 20px;
-      font-weight: bolder;
-      width:20px ;
-    }
+ #mensaje-no-encontrado {
+  display: none;
+  text-align: center;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  margin-top: 20px;
+  font-weight: bolder;
+  width: 100%; /* Que ocupe todo el ancho disponible */
+  padding: 0 10px; /* Un poco de espacio a los lados para que respire */
+  box-sizing: border-box;
+}
+
 
     #mensaje-no-encontrado img {
       max-width: 300px;
@@ -130,7 +133,7 @@
     }
 
     header h1 {
-      color: orange;
+      color: rgb(212, 120, 0);
       padding: 20px;
       font-size: 10px;
       position: absolute;
@@ -139,7 +142,7 @@
       z-index: 2;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
       text-align: left;
-       font-weight:bold ;
+      font-weight: bolder;
     }
 .detalle-img {
   width: 96%;
@@ -170,6 +173,7 @@ padding: 10px;
       margin-bottom: 20px;
       display: block;
       filter: drop-shadow(0px 4px 10px rgb(69, 172, 14));
+     
     }
   </style>
 </head>
@@ -198,10 +202,15 @@ padding: 10px;
     </div>
 
     <div id="mensaje-no-encontrado">
-      <p
-        style="background-color: rgb(172, 149, 198); width: 460px; margin: 0 auto; border-radius: 5px; font-weight: bold;">
-        No se encontró ningún carro con ese nombre.
-      </p><br>
+      <p style="
+  background-color: rgb(87, 215, 166); 
+  max-width: 90%; 
+  margin: 0 auto; 
+  border-radius: 10px; 
+  font-weight: bold;">
+  No se encontró ningún carro con ese nombre.
+</p>
+<br>
       <img src="h2.png" alt="No encontrado">
     </div>
 

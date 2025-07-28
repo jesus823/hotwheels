@@ -794,7 +794,13 @@ carros.forEach((carro, i) => {
 
   </script>
 
-
+<script>
+  document.getElementById("busqueda").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      buscarCarro();
+    }
+  });
+</script>
 </body>
 
 </html>

@@ -235,7 +235,7 @@
 
     <div id="mensaje-no-encontrado">
       <p style="
-  background-color: rgb(87, 215, 166); 
+  background-color: rgb(255, 255, 255); 
   max-width: 90%; 
   margin: 0 auto; 
   border-radius: 10px; 
@@ -248,7 +248,7 @@
 
     <div id="btn-volver-busqueda" class="mb-3 text-start" style="display: none;">
       <button class="btn btn-secondary" onclick="mostrarGaleria()"
-        style="background-color: rgb(43, 238, 76); color: black; font-weight: bold;">
+        style="background-color: rgb(89, 246, 115); color: black; font-weight: bold;">
         ← Volver a galería
       </button>
     </div>
@@ -260,7 +260,7 @@
 
     <div id="detalle" class="detalle-carro mt-5">
       <button class="btn btn-secondary mb-3" onclick="mostrarGaleria()"
-        style="background-color: rgb(75, 238, 43); color: black; font-weight: bold;">← Volver a galería</button>
+        style="background-color: rgb(89, 246, 115); color: black; font-weight: bold;">← Volver a galería</button>
       <div class="card mx-auto" style="max-width: 400px;">
         <img id="detalle-img" class="card-img-top detalle-img" alt="Imagen del carro">
 
@@ -803,7 +803,17 @@
           const carro = carros[index];
           detalleImg.src = carro.imagen;
           detalleTitulo.textContent = carro.nombre;
-          detalleDesc.textContent = carro.descripcion;
+          detalleDesc.innerHTML = `<span style="
+  background-color: ${carro.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
+                     carro.descripcion.toLowerCase() === 'matchbox' ? '#F07013' :
+                     'transparent'};
+  color: black;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  display: inline-block;
+">${carro.descripcion}</span>`;
+
 
           galeria.style.display = "none";
           detalle.style.display = "block";

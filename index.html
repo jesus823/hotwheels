@@ -148,7 +148,7 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
       text-align: left;
       font-weight: bolder;
-     
+
     }
 
     .detalle-img {
@@ -206,9 +206,9 @@
 
 <body id="top">
 
-<a href="#top" id="btnInicio" onclick="volverAlInicio(); return false;">
-  <img src="inicio.png" alt="Inicio" title="Ir al inicio"  style="border-radius: 50px;"/>
-</a>
+  <a href="#top" id="btnInicio" onclick="volverAlInicio(); return false;">
+    <img src="inicio.png" alt="Inicio" title="Ir al inicio" style="border-radius: 50px;" />
+  </a>
 
 
   <div class="fondo"></div>
@@ -707,11 +707,40 @@
         imagen: "carro70.png"
       },
 
+      {
+        nombre: "Chevrolet Camaro SS",
+        descripcion: "2010 - 2013",
+        imagen: "carro71.png"
+      },
 
+      {
+        nombre: " Volkswagen Kombi ",
+        descripcion: "1950-1970",
+        imagen: "carro72.png"
+      },
 
+      {
+        nombre: " Van ",
+        descripcion: "---",
+        imagen: "carro73.png"
+      },
+      {
+        nombre: "Volkswagen Fusca",
+        descripcion: "1967",
+        imagen: "carro74.png"
+      },
 
+      {
+        nombre: "Ford Model T Panel Van",
+        descripcion: "1923-1926",
+        imagen: "carro75.png"
+      },
 
-
+      {
+        nombre: "F-16 Fighting Falcon",
+        descripcion: "---",
+        imagen: "avion76.png"
+      },
 
 
 
@@ -748,7 +777,17 @@
       <img src="${carro.imagen}" class="card-img-top" alt="${carro.nombre}">
       <div class="card-body">
         <h5 class="card-title">${carro.nombre}</h5>
-        <p class="card-text">${carro.descripcion}</p>
+      <p class="card-text" style="
+  background-color: ${carro.descripcion.toLowerCase() === 'hot wheels' ? 'blue' :
+          carro.descripcion.toLowerCase() === 'matchbox' ? '#F07013' :
+            'transparent'};
+  color: black;
+  padding: 4px;
+  border-radius: 6px;
+">
+  ${carro.descripcion}
+</p>
+
       </div>
       <span class="badge-numero"># ${i + 1}</span>
     </div>`;
@@ -834,10 +873,10 @@
       bannerIndex = (bannerIndex + 1) % banners.length; // Avanza
       banners[bannerIndex].style.display = "block"; // Muestra el siguiente
     }, 4000); // cada 3 segundos
-function volverAlInicio() {
-  scrollToTop();       // hace scroll suave al inicio
-  mostrarGaleria();    // muestra la galería y oculta el detalle
-}
+    function volverAlInicio() {
+      scrollToTop();       // hace scroll suave al inicio
+      mostrarGaleria();    // muestra la galería y oculta el detalle
+    }
   </script>
   <script>
     document.getElementById("busqueda").addEventListener("keypress", function (e) {

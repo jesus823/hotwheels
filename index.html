@@ -7,21 +7,20 @@
   <title>Mi Colección de Carros Hot Wheels</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-   
-.fondo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("h4.jpg");
-  background-repeat: repeat;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.65;
-  z-index: -1;
-  pointer-events: none;
-}
+    .fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("h4.jpg");
+      background-repeat: repeat;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.65;
+      z-index: -1;
+      pointer-events: none;
+    }
 
     #btnVolverArriba {
       position: fixed;
@@ -42,28 +41,32 @@
 
 
     }
-.card {
-  padding: 10px; /* corregido */
-  font-weight: bold;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  cursor: pointer;
-  border-color: #000000;
-  filter: drop-shadow(2px 3px 5px rgb(13, 158, 3));
-  overflow: hidden; /* ✨ evita que algo sobresalga */
-  border-radius: 12px;
-}
 
-.card-img-top {
-  width: 100%; /* ✨ que se adapte al ancho de la tarjeta */
-  height: 120px;
-  object-fit: contain;
-  background: #eee;
-  border-radius: 10px;
-  margin-top: 10px;
-}
+    .card {
+      padding: 10px;
+      /* corregido */
+      font-weight: bold;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      cursor: pointer;
+      border-color: #000000;
+      filter: drop-shadow(2px 3px 5px rgb(13, 158, 3));
+      overflow: hidden;
+      /* ✨ evita que algo sobresalga */
+      border-radius: 12px;
+    }
+
+    .card-img-top {
+      width: 100%;
+      /* ✨ que se adapte al ancho de la tarjeta */
+      height: 120px;
+      object-fit: contain;
+      background: #eee;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
 
 
     .card-title,
@@ -80,7 +83,7 @@
 
     .card-body {
       padding: 6px;
-          
+
       /* Reduce espacio interno */
     }
 
@@ -89,17 +92,19 @@
       display: none;
     }
 
- #mensaje-no-encontrado {
-  display: none;
-  text-align: center;
-  font-size: 20px;
-  color: rgb(0, 0, 0);
-  margin-top: 20px;
-  font-weight: bolder;
-  width: 100%; /* Que ocupe todo el ancho disponible */
-  padding: 0 10px; /* Un poco de espacio a los lados para que respire */
-  box-sizing: border-box;
-}
+    #mensaje-no-encontrado {
+      display: none;
+      text-align: center;
+      font-size: 20px;
+      color: rgb(0, 0, 0);
+      margin-top: 20px;
+      font-weight: bolder;
+      width: 100%;
+      /* Que ocupe todo el ancho disponible */
+      padding: 0 10px;
+      /* Un poco de espacio a los lados para que respire */
+      box-sizing: border-box;
+    }
 
 
     #mensaje-no-encontrado img {
@@ -138,31 +143,35 @@
       font-size: 10px;
       position: absolute;
       top: 1px;
-      left: 30px;
+      left: 40px;
       z-index: 2;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
       text-align: left;
       font-weight: bolder;
+     
     }
-.detalle-img {
-  width: 96%;
-padding: 10px;
-  height: auto;
-  object-fit: contain;
-}
-.badge-numero {
-  position: absolute;
-  bottom: 8px;
-  right: 10px;
-  font-size: 8px;
-  background-color: #a7bbbb; /* amarillo */
-  color: black;
-  border: 1px solid #000;
-  padding: 4px 8px;
-  border-radius: 10px;
 
-  z-index: 10;
-}
+    .detalle-img {
+      width: 96%;
+      padding: 10px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .badge-numero {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      font-size: 8px;
+      background-color: #a7bbbb;
+      /* amarillo */
+      color: black;
+      border: 1px solid #000;
+      padding: 4px 8px;
+      border-radius: 10px;
+
+      z-index: 10;
+    }
 
 
     .banner {
@@ -173,12 +182,35 @@ padding: 10px;
       margin-bottom: 20px;
       display: block;
       filter: drop-shadow(0px 4px 10px rgb(69, 172, 14));
-     
+
+    }
+
+    #btnInicio {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1001;
+      display: block;
+    }
+
+    #btnInicio img {
+      width: 40px;
+      height: auto;
+      border: 2px solid black;
+      border-radius: 8px;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
     }
   </style>
 </head>
 
-<body>
+<body id="top">
+
+<a href="#top" id="btnInicio" onclick="volverAlInicio(); return false;">
+  <img src="inicio.png" alt="Inicio" title="Ir al inicio"  style="border-radius: 50px;"/>
+</a>
+
+
   <div class="fondo"></div>
   <header>
     <h1>Colección de Carros Hot Wheels Nacho</h1>
@@ -208,18 +240,18 @@ padding: 10px;
   margin: 0 auto; 
   border-radius: 10px; 
   font-weight: bold;">
-  No se encontró ningún carro con ese nombre.
-</p>
-<br>
+        No se encontró ningún carro con ese nombre.
+      </p>
+      <br>
       <img src="h2.png" alt="No encontrado">
     </div>
 
-<div id="btn-volver-busqueda" class="mb-3 text-start" style="display: none;">
-  <button class="btn btn-secondary" onclick="mostrarGaleria()"
-    style="background-color: rgb(43, 238, 76); color: black; font-weight: bold;">
-    ← Volver a galería
-  </button>
-</div>
+    <div id="btn-volver-busqueda" class="mb-3 text-start" style="display: none;">
+      <button class="btn btn-secondary" onclick="mostrarGaleria()"
+        style="background-color: rgb(43, 238, 76); color: black; font-weight: bold;">
+        ← Volver a galería
+      </button>
+    </div>
 
 
 
@@ -230,7 +262,7 @@ padding: 10px;
       <button class="btn btn-secondary mb-3" onclick="mostrarGaleria()"
         style="background-color: rgb(75, 238, 43); color: black; font-weight: bold;">← Volver a galería</button>
       <div class="card mx-auto" style="max-width: 400px;">
-<img id="detalle-img" class="card-img-top detalle-img" alt="Imagen del carro">
+        <img id="detalle-img" class="card-img-top detalle-img" alt="Imagen del carro">
 
         <div class="card-body">
           <h5 id="detalle-titulo" class="card-title"></h5>
@@ -276,8 +308,8 @@ padding: 10px;
         descripcion: "Hot Wheels",
         imagen: "carro3.png"
       },
-      
-       {
+
+      {
         nombre: "PASS´N GASSER",
         descripcion: "Hot Wheels",
         imagen: "carro4.png"
@@ -288,26 +320,26 @@ padding: 10px;
         descripcion: "Hot Wheels",
         imagen: "carro5.png"
       },
-      
+
       {
         nombre: "90 ACURA NSX",
         descripcion: "Hot Wheels",
         imagen: "carro6.png"
       },
 
-         {
+      {
         nombre: "AUTOMOVILI PININFARINA BATTISTA ",
         descripcion: "Hot Wheels",
         imagen: "carro7.png"
       },
 
-        {
+      {
         nombre: "2023 NISSAN Z",
         descripcion: "Hot Wheels",
         imagen: "carro8.png"
       },
 
-         {
+      {
         nombre: "GLORY CHASER",
         descripcion: "Hot Wheels",
         imagen: "carro9.png"
@@ -317,76 +349,76 @@ padding: 10px;
         descripcion: "Hot Wheels",
         imagen: "carro10.png"
       },
-       {
+      {
         nombre: " BMW 507  ",
         descripcion: "Hot Wheels",
         imagen: "carro11.png"
       },
-       {
+      {
         nombre: " 70 PLYMOUTH BARRACUDA  ",
         descripcion: "Hot Wheels",
         imagen: "carro12.png"
       },
-        {
+      {
         nombre: " GMC HUMMER EV  ",
         descripcion: "Hot Wheels",
         imagen: "carro13.png"
       },
-        {
+      {
         nombre: " 52 CHEVY  ",
         descripcion: "Hot Wheels",
         imagen: "carro14.png"
       },
-      
-    {
+
+      {
         nombre: " 23 RAM 1500  ",
         descripcion: "Hot Wheels",
         imagen: "carro15.png"
-      },{
+      }, {
         nombre: " 22 FORD MAVERICK CUSTOM  ",
         descripcion: "Hot Wheels",
         imagen: "carro16.png"
       },
-{
+      {
         nombre: " RIVIAN R1T  ",
         descripcion: "MatchBox",
         imagen: "carro17.png"
-      },{
+      }, {
         nombre: " 1978 DODGE Ll´L RED EXPRESS TRUCK  ",
         descripcion: "Hot Wheels",
         imagen: "carro18.png"
       },
-{
+      {
         nombre: " SILVERADO EV RST  ",
         descripcion: "Hot Wheels",
         imagen: "carro19.png"
       },
-{
+      {
         nombre: " MERCEDENZ - BENZ UNIMOG 1300 L  ",
         descripcion: "Hot Wheels",
         imagen: "carro20.png"
       },
 
-{
+      {
         nombre: " 69 MERCURY COUGAR ELIMINATOR ",
         descripcion: "Hot Wheels",
         imagen: "carro21.png"
       },
 
-{
+      {
         nombre: " 69 MERCURY COUGAR ELIMINATOR ",
         descripcion: "Hot Wheels",
         imagen: "carro22.png"
-      },{
+      }, {
         nombre: " 69 71 PLYMOUTH GTX ",
         descripcion: "Hot Wheels",
         imagen: "carro23.png"
       },
-{
+      {
         nombre: " 64 CHEVY CHEVELLE SS  ",
         descripcion: "Hot Wheels",
         imagen: "carro24.png"
-      },{
+      }, {
         nombre: " 67 CAMARO ",
         descripcion: "Hot Wheels",
         imagen: "carro25.png"
@@ -396,120 +428,120 @@ padding: 10px;
         descripcion: "Hot Wheels",
         imagen: "carro26.png"
       },
-      
+
       {
         nombre: " CUSTOM 68 CAMARO ",
         descripcion: "Hot Wheels",
         imagen: "carro27.png"
       },
-      
 
-         {
+
+      {
         nombre: " 70 DODGE CHARGER R/T ",
         descripcion: "Hot Wheels",
         imagen: "carro28.png"
       },
-  {
+      {
         nombre: " CUSTOM OTTO ",
         descripcion: "Hot Wheels",
         imagen: "carro29.png"
       },
 
-{
+      {
         nombre: " LAYIN LOWRIDER ",
         descripcion: "Hot Wheels",
         imagen: "carro30.png"
       },
 
 
-{
+      {
         nombre: " LAYIN LOWRIDER ",
         descripcion: "Hot Wheels",
         imagen: "carro31.png"
       },
 
 
-{
+      {
         nombre: "67 CAMARO ",
         descripcion: "Hot Wheels",
         imagen: "carro32.png"
       },
 
-{
+      {
         nombre: "68 COPO CAMARO ",
         descripcion: "Hot Wheels",
         imagen: "carro33.png"
       },
 
-{
+      {
         nombre: "68 COPO CAMARO ",
         descripcion: "Hot Wheels",
         imagen: "carro34.png"
       },
 
 
-{
+      {
         nombre: "CORVETTE STINGRAY ",
         descripcion: "Hot Wheels",
         imagen: "carro35.png"
       },
 
 
-{
+      {
         nombre: "NISSAN FAIRLADY Z ",
         descripcion: "Hot Wheels",
         imagen: "carro36.png"
       },
 
 
-{
+      {
         nombre: "BATMOBILE ",
         descripcion: "Hot Wheels",
         imagen: "carro37.png"
       },
 
-{
+      {
         nombre: "BATMAN ARKHAM KHINGHT BATMOBILE ",
         descripcion: "Hot Wheels",
         imagen: "carro38.png"
       },
 
-{
+      {
         nombre: "BATMAN ARKHAM KHINGHT BATMOBILE ",
         descripcion: "Hot Wheels",
         imagen: "carro39.png"
       },
 
-{
+      {
         nombre: "TIME MACHINE HOVER MODE ",
         descripcion: "Hot Wheels",
         imagen: "carro40.png"
       },
 
-{
+      {
         nombre: "2023 JEEP AVENGER ",
         descripcion: "Hot Wheels",
         imagen: "carro41.png"
       },
-{
+      {
         nombre: "DODGE VAN",
         descripcion: "Hot Wheels",
         imagen: "carro42.png"
       },
 
-{
+      {
         nombre: "CUSTOM 53 CHEVY",
         descripcion: "Hot Wheels",
         imagen: "carro43.png"
       },
 
-{
+      {
         nombre: "HI ROLLER ll",
         descripcion: "Hot Wheels",
         imagen: "carro44.png"
       },
 
-{
+      {
         nombre: "87 FORD SIERRA COSWORTH",
         descripcion: "Hot Wheels",
         imagen: "carro45.png"
@@ -517,161 +549,161 @@ padding: 10px;
 
 
 
-{
+      {
         nombre: "HONDA S 2000",
         descripcion: "Hot Wheels",
         imagen: "carro46.png"
       },
 
-{
+      {
         nombre: "70 CHEVELLE SS WAGON",
         descripcion: "Hot Wheels",
         imagen: "carro47.png"
       },
 
 
-{
+      {
         nombre: "--sin nombre--",
         descripcion: "Hot Wheels",
         imagen: "carro48.png"
       },
 
-{
+      {
         nombre: "ALPHA PURSUIT",
         descripcion: "Hot Wheels",
         imagen: "carro49.png"
       },
 
 
-{
+      {
         nombre: " 87 AUDI QUATTRO ",
         descripcion: "Hot Wheels",
         imagen: "carro50.png"
       },
 
-{
+      {
         nombre: " FORD FOCUS RS  ",
         descripcion: "Hot Wheels",
         imagen: "carro51.png"
       },
 
 
-{
+      {
         nombre: " PONTIAC AZTEK CUSTOM ",
         descripcion: "Hot Wheels",
         imagen: "carro52.png"
       },
 
 
-{
+      {
         nombre: "  HOT SELLING RAIL CARS ",
         descripcion: "Hot Wheels",
         imagen: "carro53.png"
       },
 
-{
+      {
         nombre: " LA FASTA",
         descripcion: "Hot Wheels",
         imagen: "carro54.png"
       },
 
-{
+      {
         nombre: " RODGER DODGER",
         descripcion: "Hot Wheels",
         imagen: "carro55.png"
       },
 
-{
+      {
         nombre: " GT SCORCHER",
         descripcion: "Hot Wheels",
         imagen: "carro56.png"
       },
 
-{
+      {
         nombre: " PURRFECT SPEED",
         descripcion: "Hot Wheels",
         imagen: "carro57.png"
       },
 
-{
+      {
         nombre: " --sin nombre--",
         descripcion: "Hot Wheels",
         imagen: "carro58.png"
       },
 
 
-{
+      {
         nombre: " 1953 BUICK SKYLARK CONVERTIBLE",
         descripcion: "MatchBox",
         imagen: "carro59.png"
       },
 
-{
+      {
         nombre: " HOT SELLING RAIL CARS",
         descripcion: "Hot Wheels",
         imagen: "carro60.png"
       },
 
-{
+      {
         nombre: " 1986 TOYOTA VAN",
-        descripcion:  "Hot Wheels",
+        descripcion: "Hot Wheels",
         imagen: "carro61.png"
       },
 
-{
+      {
         nombre: " 1986 TOYOTA VAN",
-        descripcion:  "Hot Wheels",
+        descripcion: "Hot Wheels",
         imagen: "carro62.png"
       },
-{
+      {
         nombre: " CHOW MOBILE",
-        descripcion:  "MatchBox",
+        descripcion: "MatchBox",
         imagen: "carro63.png"
       },
 
 
-{
+      {
         nombre: " RENAULT KANGOO EXPRESS",
-        descripcion:  "MatchBox",
+        descripcion: "MatchBox",
         imagen: "carro64.png"
       },
 
-{
+      {
         nombre: " SRT VIPER GTS-R   ",
-        descripcion:  "Hot Wheels",
+        descripcion: "Hot Wheels",
         imagen: "carro65.png"
       },
 
 
-{
+      {
         nombre: " HOT WHEELS FORD TRANSIT CONNECT ",
-        descripcion:  "Hot Wheels",
+        descripcion: "Hot Wheels",
         imagen: "carro66.png"
       },
 
 
-{
+      {
         nombre: " 95 JEEP CHEROKEE  ",
-        descripcion:  "Hot Wheels",
+        descripcion: "Hot Wheels",
         imagen: "carro67.png"
       },
 
 
-{
+      {
         nombre: " KOOL KOMBI  ",
-        descripcion:  "Hot Wheels",
+        descripcion: "Hot Wheels",
         imagen: "carro68.png"
       },
 
-{
+      {
         nombre: " TESLA CYBERQUAD ",
-        descripcion:  "Hot Wheels",
+        descripcion: "Hot Wheels",
         imagen: "carro69.png"
       },
 
-{
+      {
         nombre: "75 CHEVY VAN",
-        descripcion:  "Hot Wheels",
+        descripcion: "Hot Wheels",
         imagen: "carro70.png"
       },
 
@@ -708,10 +740,10 @@ padding: 10px;
       });
     }
 
-carros.forEach((carro, i) => {
-  const col = document.createElement("div");
-  col.className = "col-6 col-md-4 col-lg-3 mb-4";
-  col.innerHTML = `
+    carros.forEach((carro, i) => {
+      const col = document.createElement("div");
+      col.className = "col-6 col-md-4 col-lg-3 mb-4";
+      col.innerHTML = `
     <div class="card h-100 position-relative" data-index="${i}">
       <img src="${carro.imagen}" class="card-img-top" alt="${carro.nombre}">
       <div class="card-body">
@@ -720,8 +752,8 @@ carros.forEach((carro, i) => {
       </div>
       <span class="badge-numero"># ${i + 1}</span>
     </div>`;
-  galeria.appendChild(col);
-});
+      galeria.appendChild(col);
+    });
 
 
 
@@ -767,15 +799,15 @@ carros.forEach((carro, i) => {
       galeria.style.display = "flex";
       detalle.style.display = "none";
 
-  if (valor.trim() === "") {
-  btnVolverBusqueda.style.display = "none"; // no hay búsqueda activa
-} else if (coincidencias === 0) {
-  mensajeNoEncontrado.style.display = "block";
-  btnVolverBusqueda.style.display = "block";
-} else {
-  mensajeNoEncontrado.style.display = "none";
-  btnVolverBusqueda.style.display = "block";
-}
+      if (valor.trim() === "") {
+        btnVolverBusqueda.style.display = "none"; // no hay búsqueda activa
+      } else if (coincidencias === 0) {
+        mensajeNoEncontrado.style.display = "block";
+        btnVolverBusqueda.style.display = "block";
+      } else {
+        mensajeNoEncontrado.style.display = "none";
+        btnVolverBusqueda.style.display = "block";
+      }
 
     }
 
@@ -802,15 +834,18 @@ carros.forEach((carro, i) => {
       bannerIndex = (bannerIndex + 1) % banners.length; // Avanza
       banners[bannerIndex].style.display = "block"; // Muestra el siguiente
     }, 4000); // cada 3 segundos
-
+function volverAlInicio() {
+  scrollToTop();       // hace scroll suave al inicio
+  mostrarGaleria();    // muestra la galería y oculta el detalle
+}
   </script>
-<script>
-  document.getElementById("busqueda").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      buscarCarro();
-    }
-  });
-</script>
+  <script>
+    document.getElementById("busqueda").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        buscarCarro();
+      }
+    });
+  </script>
 
 
 </body>

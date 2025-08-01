@@ -254,6 +254,57 @@
 }
 
 
+
+.detalle-numero {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  background-color: #e0e0e0;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+
+@media (max-width: 768px) {
+  .vista-detalle-carrusel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding: 20px 10px;
+  }
+
+  .vista-detalle-carrusel img {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+
+  .vista-detalle-carrusel {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .vista-central, .vista-lateral {
+    min-width: 70%;
+    max-width: 90%;
+  }
+
+  .vista-lateral {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+
+  .vista-central {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
   </style>
 </head>
 
@@ -1040,6 +1091,13 @@ function mostrarDetalle(index) {
   `;
 
   detalleTitulo.textContent = actual.nombre;
+const numeroCarro = carros.indexOf(actual) + 1;
+detalleTitulo.innerHTML = `
+  ${actual.nombre}
+  <span class="detalle-numero">#${numeroCarro}</span>
+`;
+
+
   detalleDesc.innerHTML = `
     <span style="background-color: ${
       actual.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :

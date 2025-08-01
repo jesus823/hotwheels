@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -1107,6 +1108,24 @@ function renderCarrusel() {
       renderCarrusel();
     }
   });
+
+  // Evento para hacer clic en la imagen lateral y cambiar la central
+const imagenesCarrusel = document.querySelectorAll("#carrusel-contenedor img");
+
+imagenesCarrusel.forEach((img, idx) => {
+  img.addEventListener("click", () => {
+    if (img.classList.contains("vista-lateral")) {
+      if (idx === 0 && indexCarrusel > 0) {
+        indexCarrusel--; // clic en imagen izquierda
+        renderCarrusel();
+      } else if (idx === 2 && indexCarrusel < carrosCarrusel.length - 1) {
+        indexCarrusel++; // clic en imagen derecha
+        renderCarrusel();
+      }
+    }
+  });
+});
+
 }
 
 renderCarrusel();

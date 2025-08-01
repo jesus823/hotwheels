@@ -1111,6 +1111,37 @@ detalleTitulo.innerHTML = `
   detalle.style.display = "block";
   mensajeNoEncontrado.style.display = "none";
   btnVolverBusqueda.style.display = "none";
+
+  let touchStartX = 0;
+
+detalleImg.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+});
+
+detalleImg.addEventListener("touchend", (e) => {
+  const touchEndX = e.changedTouches[0].clientX;
+  const diffX = touchEndX - touchStartX;
+
+  if (Math.abs(diffX) > 50) { // Umbral mínimo
+    const carrosConVistaExtra = carros.filter(c =>
+      c.imagenes?.some(img => /\.\d+\.png$/.test(img))
+    );
+
+    const carroActual = carros[carroActualIndex];
+    const indexEnVistaExtra = carrosConVistaExtra.findIndex(c => c === carroActual);
+
+    if (diffX < 0 && indexEnVistaExtra < carrosConVistaExtra.length - 1) {
+      // Swipe izquierda: siguiente
+      const siguiente = carrosConVistaExtra[indexEnVistaExtra + 1];
+      mostrarDetalle(carros.indexOf(siguiente));
+    } else if (diffX > 0 && indexEnVistaExtra > 0) {
+      // Swipe derecha: anterior
+      const anterior = carrosConVistaExtra[indexEnVistaExtra - 1];
+      mostrarDetalle(carros.indexOf(anterior));
+    }
+  }
+});
+
 }
 
 

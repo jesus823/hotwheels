@@ -210,7 +210,50 @@
       text-align: center;
     }
 
-    
+    .imagen-con-botones {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.vista-detalle-carrusel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding: 40px 10px;
+  gap: 10px;
+}
+
+.vista-detalle-carrusel img {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 2px solid black;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.vista-central {
+  width: 60%;
+  z-index: 2;
+}
+
+.vista-lateral {
+  width: 20%;
+  opacity: 0.4;
+  transform: scale(0.9);
+  z-index: 1;
+}
+
+
   </style>
 </head>
 
@@ -276,21 +319,19 @@
 
 
 
-      <div class="card mx-auto" style="max-width: 400px;">
-        <div id="detalle-img" class="d-flex flex-wrap justify-content-start"></div>
+<!-- CARRUSEL FUERA DE LA TARJETA -->
+<div id="detalle-img" class="d-flex flex-wrap justify-content-center mb-3"></div>
 
-
-        <div class="card-body">
-          <h5 id="detalle-titulo" class="card-title"></h5>
-          <p id="detalle-desc" class="card-text"></p>
-        </div>
-      </div>
-
-  <div class="d-flex justify-content-between mt-3" id="navegacion-detalle" style="max-width: 400px; margin: 0 auto;">
-    <button class="btn btn-warning" id="btnAnterior" style="font-weight: bold;">← Anterior</button>
-    <button class="btn btn-warning" id="btnSiguiente" style="font-weight: bold;">Continuar →</button>
+<!-- TARJETA SOLO PARA TÍTULO Y DESCRIPCIÓN -->
+<div class="card mx-auto" style="max-width: 400px;">
+  <div class="card-body">
+    <h5 id="detalle-titulo" class="card-title"></h5>
+    <p id="detalle-desc" class="card-text"></p>
   </div>
 </div>
+
+
+
 
 
     </div>
@@ -886,58 +927,15 @@
 
 
 
-    function asignarEventosClick() {
-      document.querySelectorAll(".card").forEach(card => {
-        card.addEventListener("click", function () {
-          const index = this.getAttribute("data-index");
-          const carro = carros[index];
+function asignarEventosClick() {
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", function () {
+      const index = parseInt(this.getAttribute("data-index"));
+      mostrarDetalle(index); // esta sí usa el carrusel completo
+    });
+  });
+}
 
-          const imagenPrincipal = carro.imagen || (carro.imagenes && carro.imagenes[0]);
-          const imagenesSecundarias = carro.imagenes?.filter(src => src !== imagenPrincipal) || [];
-
-          if (imagenesSecundarias.length > 0) {
-            // Mostrar solo las secundarias (excluyendo la que ya está en la galería)
-            detalleImg.innerHTML = `
-    <div class="d-flex flex-column align-items-center">
-      ${imagenesSecundarias.map(src =>
-              `<img src="${src}" class="img-fluid m-2" style="max-width: 90%; cursor: pointer;">`
-            ).join("")}
-    </div>
-  `;
-          } else if (imagenPrincipal) {
-            // Si no hay más imágenes, mostrar al menos la principal
-            detalleImg.innerHTML = `
-    <img src="${imagenPrincipal}" class="img-fluid m-2" style="max-width: 100%;">
-  `;
-          } else {
-            // No hay imágenes
-            detalleImg.innerHTML = `<p>No hay imágenes disponibles.</p>`;
-          }
-
-
-          detalleTitulo.textContent = carro.nombre;
-       detalleDesc.innerHTML = `
-  <span style="
-    background-color: ${carro.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
-      carro.descripcion.toLowerCase() === 'matchbox' ? '#F07013' :
-      'transparent'};
-    color: black;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-weight: bold;
-    display: inline-block;">
-    ${carro.descripcion}
-  </span>
-`;
-
-
-          galeria.style.display = "none";
-          detalle.style.display = "block";
-          mensajeNoEncontrado.style.display = "none";
-          btnVolverBusqueda.style.display = "none";
-        });
-      });
-    }
 
 
 
@@ -1014,72 +1012,69 @@ asignarEventosClick();
 
     let carroActualIndex = 0;
 
-// Mostrar el detalle de un carro por índice
 function mostrarDetalle(index) {
-  const carro = carros[index];
-  carroActualIndex = index;
+  const carroClicado = carros[index];
 
-  // Muestra imagen o imágenes del carro
-  const imagenPrincipal = carro.imagen || (carro.imagenes && carro.imagenes[0]);
-  const imagenesSecundarias = carro.imagenes?.filter(src => src !== imagenPrincipal) || [];
+  // Verificamos si tiene imagen .1, .2, etc. (vista extra)
+  const vistaExtra = carroClicado.imagenes?.find(img => /\.\d+\.png$/.test(img));
+  if (!vistaExtra) return;
 
-  if (imagenesSecundarias.length > 0) {
-    detalleImg.innerHTML = imagenesSecundarias.map(src =>
-      `<img src="${src}" class="img-fluid m-2" style="max-width: 90%;">`
-    ).join("");
-  } else {
-    detalleImg.innerHTML = `<img src="${imagenPrincipal}" class="img-fluid m-2" style="max-width: 100%;">`;
-  }
+  // Filtramos todos los carros que tienen imagen .1, .2, .3, etc.
+  const carrosConVistaExtra = carros.filter(c =>
+    c.imagenes?.some(img => /\.\d+\.png$/.test(img))
+  );
 
-  // Título y descripción
-  detalleTitulo.textContent = carro.nombre;
+  // Buscamos el índice real del carro clicado en la lista filtrada
+  const indexEnVistaExtra = carrosConVistaExtra.findIndex(c => c === carroClicado);
+
+  const anterior = indexEnVistaExtra > 0 ? carrosConVistaExtra[indexEnVistaExtra - 1] : null;
+  const actual = carrosConVistaExtra[indexEnVistaExtra];
+  const siguiente = indexEnVistaExtra < carrosConVistaExtra.length - 1 ? carrosConVistaExtra[indexEnVistaExtra + 1] : null;
+
+  detalleImg.innerHTML = `
+    <div class="vista-detalle-carrusel">
+      ${anterior ? `<img src="${anterior.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-lateral" onclick="mostrarDetalle(${carros.indexOf(anterior)})">` : ""}
+      <img src="${actual.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-central">
+      ${siguiente ? `<img src="${siguiente.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-lateral" onclick="mostrarDetalle(${carros.indexOf(siguiente)})">` : ""}
+    </div>
+  `;
+
+  detalleTitulo.textContent = actual.nombre;
   detalleDesc.innerHTML = `
     <span style="background-color: ${
-      carro.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
-      carro.descripcion.toLowerCase() === 'matchbox' ? '#F07013' : 'gray'
+      actual.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
+      actual.descripcion.toLowerCase() === 'matchbox' ? '#F07013' : 'gray'
     }; color: white; padding: 4px 8px; border-radius: 6px;">
-      ${carro.descripcion}
+      ${actual.descripcion}
     </span>
   `;
 
-  // Mostrar/ocultar botones
   galeria.style.display = "none";
   detalle.style.display = "block";
-
-  document.getElementById("btnAnterior").style.visibility = index > 0 ? "visible" : "hidden";
-  document.getElementById("btnSiguiente").style.visibility = index < carros.length - 1 ? "visible" : "hidden";
+  mensajeNoEncontrado.style.display = "none";
+  btnVolverBusqueda.style.display = "none";
 }
 
-// Asignar eventos de clic a cada tarjeta
-function asignarEventosClick() {
-  const tarjetas = document.querySelectorAll(".card[data-index]");
-  tarjetas.forEach(tarjeta => {
-    tarjeta.addEventListener("click", function () {
-      const index = parseInt(this.getAttribute("data-index"));
-      mostrarDetalle(index);
-    });
-  });
-}
 
-// Botón anterior
-document.getElementById("btnAnterior").addEventListener("click", () => {
-  if (carroActualIndex > 0) {
-    mostrarDetalle(carroActualIndex - 1);
-  }
-});
 
-// Botón siguiente
-document.getElementById("btnSiguiente").addEventListener("click", () => {
-  if (carroActualIndex < carros.length - 1) {
-    mostrarDetalle(carroActualIndex + 1);
-  }
-});
+
+
 
 // Volver a galería
 function mostrarGaleria() {
   detalle.style.display = "none";
   galeria.style.display = "flex";
+  mensajeNoEncontrado.style.display = "none";
+  btnVolverBusqueda.style.display = "none";
+
+  // Asegúrate de mostrar todas las tarjetas
+  document.querySelectorAll(".col-6, .col-md-4, .col-lg-3").forEach(card => {
+    card.style.display = "block";
+  });
+
+  document.getElementById("busqueda").value = "";
 }
+
 
   </script>
   <script>

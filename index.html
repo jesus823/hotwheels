@@ -73,7 +73,7 @@
     .card-text {
       word-break: break-word;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       /* Más compacto */
       line-height: 1.1;
       margin: 8px;
@@ -201,6 +201,16 @@
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
       cursor: pointer;
     }
+
+    #detalle-img {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    
   </style>
 </head>
 
@@ -259,16 +269,30 @@
     <div id="galeria" class="row mt-4"></div>
 
     <div id="detalle" class="detalle-carro mt-5">
-      <button class="btn btn-secondary mb-3" onclick="mostrarGaleria()"
-        style="background-color: rgb(89, 246, 115); color: black; font-weight: bold;">← Volver a galería</button>
+    <button class="btn btn-secondary mb-3" onclick="mostrarGaleria()"
+  style="background-color: rgb(89, 246, 115); color: black; font-weight: bold;">
+  ← Volver a galería
+</button>
+
+
+
       <div class="card mx-auto" style="max-width: 400px;">
-        <img id="detalle-img" class="card-img-top detalle-img" alt="Imagen del carro">
+        <div id="detalle-img" class="d-flex flex-wrap justify-content-start"></div>
+
 
         <div class="card-body">
           <h5 id="detalle-titulo" class="card-title"></h5>
           <p id="detalle-desc" class="card-text"></p>
         </div>
       </div>
+
+  <div class="d-flex justify-content-between mt-3" id="navegacion-detalle" style="max-width: 400px; margin: 0 auto;">
+    <button class="btn btn-warning" id="btnAnterior" style="font-weight: bold;">← Anterior</button>
+    <button class="btn btn-warning" id="btnSiguiente" style="font-weight: bold;">Continuar →</button>
+  </div>
+</div>
+
+
     </div>
   </div>
   <button id="btnVolverArriba" onclick="scrollToTop()">
@@ -283,7 +307,78 @@
   </footer>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script>
+
     const galeria = document.getElementById("galeria");
     const detalle = document.getElementById("detalle");
     const detalleImg = document.getElementById("detalle-img");
@@ -296,417 +391,423 @@
       {
         nombre: "MR ll",
         descripcion: "Hot Wheels",
-        imagen: "carro1.png"
+        imagenes: ["carro1.png", "img-segundarias/carro1.1.png"]
       },
 
       {
         nombre: "VOLVO 240 DRIFT WAGON",
         descripcion: "Hot Wheels",
-        imagen: "carro2.png"
+        imagenes: ["carro2.png", "img-segundarias/carro2.2.png"]
       },
 
       {
         nombre: "DATSUN BLUEBIRD WAGON 510",
         descripcion: "Hot Wheels",
-        imagen: "carro3.png"
+        imagenes: ["carro3.png", "img-segundarias/carro3.3.png"]
       },
 
       {
         nombre: "PASS´N GASSER",
         descripcion: "Hot Wheels",
-        imagen: "carro4.png"
+        imagenes: ["carro4.png", "img-segundarias/carro4.4.png"]
       },
 
       {
-        nombre: "96 PORSCHECARRERA",
+        nombre: "96 PORSCHE CARRERA",
         descripcion: "Hot Wheels",
-        imagen: "carro5.png"
+        imagenes: ["carro5.png", "img-segundarias/carro5.5.png"]
       },
 
       {
         nombre: "90 ACURA NSX",
         descripcion: "Hot Wheels",
-        imagen: "carro6.png"
+        imagenes: ["carro6.png", "img-segundarias/carro6.6.png"]
       },
 
       {
-        nombre: "AUTOMOVILI PININFARINA BATTISTA ",
+        nombre: "AUTOMOVILI PININFARINA BATTISTA",
         descripcion: "Hot Wheels",
-        imagen: "carro7.png"
+        imagenes: ["carro7.png", "img-segundarias/carro7.7.png"]
       },
 
       {
         nombre: "2023 NISSAN Z",
         descripcion: "Hot Wheels",
-        imagen: "carro8.png"
+        imagenes: ["carro8.png", "img-segundarias/carro8.8.png"]
       },
 
       {
         nombre: "GLORY CHASER",
         descripcion: "Hot Wheels",
-        imagen: "carro9.png"
-      },
-      {
-        nombre: " 91 MAZDA MX5- MIATA  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro10.png"
-      },
-      {
-        nombre: " BMW 507  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro11.png"
-      },
-      {
-        nombre: " 70 PLYMOUTH BARRACUDA  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro12.png"
-      },
-      {
-        nombre: " GMC HUMMER EV  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro13.png"
-      },
-      {
-        nombre: " 52 CHEVY  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro14.png"
+        imagenes: ["carro9.png", "img-segundarias/carro9.9.png"]
       },
 
       {
-        nombre: " 23 RAM 1500  ",
+        nombre: "91 MAZDA MX5- MIATA",
         descripcion: "Hot Wheels",
-        imagen: "carro15.png"
-      }, {
-        nombre: " 22 FORD MAVERICK CUSTOM  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro16.png"
+        imagenes: ["carro10.png", "img-segundarias/carro10.10.png"]
       },
+
       {
-        nombre: " RIVIAN R1T  ",
+        nombre: "BMW 507",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro11.png", "img-segundarias/carro11.11.png"]
+      },
+
+      {
+        nombre: "70 PLYMOUTH BARRACUDA",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro12.png", "img-segundarias/carro12.12.png"]
+      },
+
+      {
+        nombre: "GMC HUMMER EV",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro13.png", "img-segundarias/carro13.13.png"]
+      },
+
+      {
+        nombre: "52 CHEVY",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro14.png", "img-segundarias/carro14.14.png"]
+      },
+
+      {
+        nombre: "23 RAM 1500",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro15.png", "img-segundarias/carro15.15.png"]
+      },
+
+      {
+        nombre: "22 FORD MAVERICK CUSTOM",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro16.png", "img-segundarias/carro16.16.png"]
+      },
+
+      {
+        nombre: "RIVIAN R1T",
         descripcion: "MatchBox",
-        imagen: "carro17.png"
-      }, {
-        nombre: " 1978 DODGE Ll´L RED EXPRESS TRUCK  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro18.png"
-      },
-      {
-        nombre: " SILVERADO EV RST  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro19.png"
-      },
-      {
-        nombre: " MERCEDEZ - BENZ UNIMOG 1300 L  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro20.png"
+        imagenes: ["carro17.png", "img-segundarias/carro17.17.png"]
       },
 
       {
-        nombre: " 69 MERCURY COUGAR ELIMINATOR ",
+        nombre: "1978 DODGE Ll´L RED EXPRESS TRUCK",
         descripcion: "Hot Wheels",
-        imagen: "carro21.png"
+        imagenes: ["carro18.png", "img-segundarias/carro18.18.png"]
       },
 
       {
-        nombre: " 69 MERCURY COUGAR ELIMINATOR ",
+        nombre: "SILVERADO EV RST",
         descripcion: "Hot Wheels",
-        imagen: "carro22.png"
-      }, {
-        nombre: " 71 PLYMOUTH GTX ",
-        descripcion: "Hot Wheels",
-        imagen: "carro23.png"
-      },
-      {
-        nombre: " 64 CHEVY CHEVELLE SS  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro24.png"
-      }, {
-        nombre: " 67 CAMARO ",
-        descripcion: "Hot Wheels",
-        imagen: "carro25.png"
-      },
-      {
-        nombre: " 68 DODGE DART ",
-        descripcion: "Hot Wheels",
-        imagen: "carro26.png"
+        imagenes: ["carro19.png", "img-segundarias/carro19.19.png"]
       },
 
       {
-        nombre: " CUSTOM 68 CAMARO ",
+        nombre: "MERCEDENZ - BENZ UNIMOG 1300 L",
         descripcion: "Hot Wheels",
-        imagen: "carro27.png"
+        imagenes: ["carro20.png", "img-segundarias/carro20.20.png"]
       },
 
 
       {
-        nombre: " 70 DODGE CHARGER R/T ",
+        nombre: "69 MERCURY COUGAR ELIMINATOR",
         descripcion: "Hot Wheels",
-        imagen: "carro28.png"
-      },
-      {
-        nombre: " CUSTOM OTTO ",
-        descripcion: "Hot Wheels",
-        imagen: "carro29.png"
+        imagenes: ["carro21.png", "img-segundarias/carro21.21.png"]
       },
 
       {
-        nombre: " LAYIN LOWRIDER ",
+        nombre: "69 MERCURY COUGAR ELIMINATOR",
         descripcion: "Hot Wheels",
-        imagen: "carro30.png"
-      },
-
-
-      {
-        nombre: " LAYIN LOWRIDER ",
-        descripcion: "Hot Wheels",
-        imagen: "carro31.png"
-      },
-
-
-      {
-        nombre: "67 CAMARO ",
-        descripcion: "Hot Wheels",
-        imagen: "carro32.png"
+        imagenes: ["carro22.png", "img-segundarias/carro22.22.png"]
       },
 
       {
-        nombre: "68 COPO CAMARO ",
+        nombre: "69 71 PLYMOUTH GTX",
         descripcion: "Hot Wheels",
-        imagen: "carro33.png"
+        imagenes: ["carro23.png", "img-segundarias/carro23.23.png"]
       },
 
       {
-        nombre: "68 COPO CAMARO ",
+        nombre: "64 CHEVY CHEVELLE SS",
         descripcion: "Hot Wheels",
-        imagen: "carro34.png"
-      },
-
-
-      {
-        nombre: "CORVETTE STINGRAY ",
-        descripcion: "Hot Wheels",
-        imagen: "carro35.png"
-      },
-
-
-      {
-        nombre: "NISSAN FAIRLADY Z ",
-        descripcion: "Hot Wheels",
-        imagen: "carro36.png"
-      },
-
-
-      {
-        nombre: "BATMOBILE ",
-        descripcion: "Hot Wheels",
-        imagen: "carro37.png"
+        imagenes: ["carro24.png", "img-segundarias/carro24.24.png"]
       },
 
       {
-        nombre: "BATMAN ARKHAM KHINGHT BATMOBILE ",
+        nombre: "67 CAMARO",
         descripcion: "Hot Wheels",
-        imagen: "carro38.png"
+        imagenes: ["carro25.png", "img-segundarias/carro25.25.png"]
+      },
+
+      {
+        nombre: "68 DODGE DART",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro26.png", "img-segundarias/carro26.26.png"]
+      },
+
+      {
+        nombre: "CUSTOM 68 CAMARO",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro27.png", "img-segundarias/carro27.27.png"]
+      },
+
+      {
+        nombre: "70 DODGE CHARGER R/T",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro28.png", "img-segundarias/carro28.28.png"]
+      },
+
+      {
+        nombre: "CUSTOM OTTO",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro29.png", "img-segundarias/carro29.29.png"]
+      },
+
+      {
+        nombre: "LAYIN LOWRIDER",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro30.png", "img-segundarias/carro30.30.png"]
+      },
+
+      {
+        nombre: "LAYIN LOWRIDER",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro31.png", "img-segundarias/carro31.31.png"]
+      },
+
+      {
+        nombre: "67 CAMARO",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro32.png", "img-segundarias/carro32.32.png"]
+      },
+
+      {
+        nombre: "68 COPO CAMARO",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro33.png", "img-segundarias/carro33.33.png"]
+      },
+
+      {
+        nombre: "68 COPO CAMARO",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro34.png", "img-segundarias/carro34.34.png"]
+      },
+
+      {
+        nombre: "CORVETTE STINGRAY",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro35.png", "img-segundarias/carro35.35.png"]
+      },
+
+      {
+        nombre: "NISSAN FAIRLADY Z",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro36.png", "img-segundarias/carro36.36.png"]
+      },
+
+      {
+        nombre: "BATMOBILE",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro37.png", "img-segundarias/carro37.37.png"]
+      },
+
+      {
+        nombre: "BATMAN ARKHAM KHINGHT BATMOBILE",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro38.png", "img-segundarias/carro38.38.png"]
       },
 
       {
         nombre: "FORD POLICE INTERCEPTOR",
         descripcion: "MATCHBOX",
-        imagen: "carro39.png"
+        imagenes: ["carro39.png", "img-segundarias/carro39.39.png"]
       },
 
       {
-        nombre: "TIME MACHINE HOVER MODE ",
+        nombre: "TIME MACHINE HOVER MODE",
         descripcion: "Hot Wheels",
-        imagen: "carro40.png"
+        imagenes: ["carro40.png", "img-segundarias/carro40.40.png"]
       },
 
       {
-        nombre: "2023 JEEP AVENGER ",
+        nombre: "2023 JEEP AVENGER",
         descripcion: "MATCHBOX",
-        imagen: "carro41.png"
+        imagenes: ["carro41.png", "img-segundarias/carro41.41.png"]
       },
+
       {
         nombre: "DODGE VAN",
         descripcion: "Hot Wheels",
-        imagen: "carro42.png"
+        imagenes: ["carro42.png", "img-segundarias/carro42.42.png"]
       },
 
       {
         nombre: "CUSTOM 53 CHEVY",
         descripcion: "Hot Wheels",
-        imagen: "carro43.png"
+        imagenes: ["carro43.png", "img-segundarias/carro43.43.png"]
       },
 
       {
         nombre: "HI ROLLER ll",
         descripcion: "Hot Wheels",
-        imagen: "carro44.png"
+        imagenes: ["carro44.png", "img-segundarias/carro44.44.png"]
       },
 
       {
         nombre: "87 FORD SIERRA COSWORTH",
         descripcion: "Hot Wheels",
-        imagen: "carro45.png"
+        imagenes: ["carro45.png", "img-segundarias/carro45.45.png"]
       },
-
-
 
       {
         nombre: "HONDA S 2000",
         descripcion: "Hot Wheels",
-        imagen: "carro46.png"
+        imagenes: ["carro46.png", "img-segundarias/carro46.46.png"]
       },
 
       {
         nombre: "70 CHEVELLE SS WAGON",
         descripcion: "Hot Wheels",
-        imagen: "carro47.png"
+        imagenes: ["carro47.png", "img-segundarias/carro47.47.png"]
       },
 
 
-      {
-        nombre: "CUSTOM MOTOR",
-        descripcion: "---",
-        imagen: "carro48.png"
+      {  /*  no tiene mas vistas */
+        nombre: "--sin nombre--",
+        descripcion: "Hot Wheels",
+       imagenes: ["carro48.png", "carro48.png"]
       },
 
       {
         nombre: "ALPHA PURSUIT",
         descripcion: "Hot Wheels",
-        imagen: "carro49.png"
+        imagenes: ["carro49.png", "img-segundarias/carro49.49.png"]
       },
 
-
       {
-        nombre: " 87 AUDI QUATTRO ",
+        nombre: "87 AUDI QUATTRO",
         descripcion: "Hot Wheels",
-        imagen: "carro50.png"
+        imagenes: ["carro50.png", "img-segundarias/carro50.50.png"]
       },
 
       {
-        nombre: " FORD FOCUS RS  ",
+        nombre: "FORD FOCUS RS",
         descripcion: "Hot Wheels",
-        imagen: "carro51.png"
+        imagenes: ["carro51.png", "img-segundarias/carro51.51.png"]
       },
 
-
       {
-        nombre: " PONTIAC AZTEK CUSTOM ",
+        nombre: "PONTIAC AZTEK CUSTOM",
         descripcion: "Hot Wheels",
-        imagen: "carro52.png"
+        imagenes: ["carro52.png", "img-segundarias/carro52.52.png"]
       },
 
-
       {
-        nombre: "  HOT SELLING RAIL CARS ",
+        nombre: "HOT SELLING RAIL CARS",
         descripcion: "Hot Wheels",
-        imagen: "carro53.png"
+        imagenes: ["carro53.png", "carro53.png"]
       },
 
       {
-        nombre: " LA FASTA",
+        nombre: "LA FASTA",
         descripcion: "Hot Wheels",
-        imagen: "carro54.png"
+        imagenes: ["carro54.png", "img-segundarias/carro54.54.png"]
       },
 
       {
-        nombre: " RODGER DODGER",
+        nombre: "RODGER DODGER",
         descripcion: "Hot Wheels",
-        imagen: "carro55.png"
+        imagenes: ["carro55.png", "img-segundarias/carro55.55.png"]
       },
 
       {
-        nombre: " GT SCORCHER",
+        nombre: "GT SCORCHER",
         descripcion: "Hot Wheels",
-        imagen: "carro56.png"
+        imagenes: ["carro56.png", "img-segundarias/carro56.56.png"]
       },
 
       {
-        nombre: " PURRFECT SPEED",
+        nombre: "PURRFECT SPEED",
         descripcion: "Hot Wheels",
-        imagen: "carro57.png"
+        imagenes: ["carro57.png", "img-segundarias/carro57.57.png"]
       },
 
       {
-        nombre: " --sin nombre--",
+        nombre: "--sin nombre--",
         descripcion: "Hot Wheels",
-        imagen: "carro58.png"
+        imagenes: ["carro58.jpg", "img-segundarias/carro58.58.png"]
       },
 
-
       {
-        nombre: " 1953 BUICK SKYLARK CONVERTIBLE",
+        nombre: "1953 BUICK SKYLARK CONVERTIBLE",
         descripcion: "MatchBox",
-        imagen: "carro59.png"
+        imagenes: ["carro59.png", "img-segundarias/carro59.59.png"]
       },
 
-      {
+      { /*  no tiene mas vistas */
         nombre: " HOT SELLING RAIL CARS",
         descripcion: "Hot Wheels",
-        imagen: "carro60.png"
+         imagenes: ["carro60.png", "carro60.png"]
       },
 
       {
-        nombre: " 1986 TOYOTA VAN",
+        nombre: "1986 TOYOTA VAN",
         descripcion: "Hot Wheels",
-        imagen: "carro61.png"
+        imagenes: ["carro61.png", "img-segundarias/carro61.61.png"]
       },
 
       {
-        nombre: " 1986 TOYOTA VAN",
+        nombre: "1986 TOYOTA VAN",
         descripcion: "Hot Wheels",
-        imagen: "carro62.png"
+        imagenes: ["carro62.png", "img-segundarias/carro62.62.png"]
       },
+
       {
-        nombre: " CHOW MOBILE",
+        nombre: "CHOW MOBILE",
         descripcion: "MatchBox",
-        imagen: "carro63.png"
+        imagenes: ["carro63.png", "img-segundarias/carro63.63.png"]
       },
 
-
       {
-        nombre: " RENAULT KANGOO EXPRESS",
+        nombre: "RENAULT KANGOO EXPRESS",
         descripcion: "MatchBox",
-        imagen: "carro64.png"
+        imagenes: ["carro64.png", "img-segundarias/carro64.64.png"]
       },
 
       {
-        nombre: " SRT VIPER GTS-R   ",
+        nombre: "SRT VIPER GTS-R",
         descripcion: "Hot Wheels",
-        imagen: "carro65.png"
-      },
-
-
-      {
-        nombre: " HOT WHEELS FORD TRANSIT CONNECT ",
-        descripcion: "Hot Wheels",
-        imagen: "carro66.png"
-      },
-
-
-      {
-        nombre: " 95 JEEP CHEROKEE  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro67.png"
-      },
-
-
-      {
-        nombre: " KOOL KOMBI  ",
-        descripcion: "Hot Wheels",
-        imagen: "carro68.png"
+        imagenes: ["carro65.png", "img-segundarias/carro65.65.png"]
       },
 
       {
-        nombre: " TESLA CYBERQUAD ",
+        nombre: "HOT WHEELS FORD TRANSIT CONNECT",
         descripcion: "Hot Wheels",
-        imagen: "carro69.png"
+        imagenes: ["carro66.png", "img-segundarias/carro66.66.png"]
+      },
+
+      {
+        nombre: "95 JEEP CHEROKEE",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro67.png", "img-segundarias/carro67.67.png"]
+      },
+
+      {
+        nombre: "KOOL KOMBI",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro68.png", "img-segundarias/carro68.68.png"]
+      },
+
+      {
+        nombre: "TESLA CYBERQUAD",
+        descripcion: "Hot Wheels",
+        imagenes: ["carro69.png", "img-segundarias/carro69.69.png"]
       },
 
       {
         nombre: "75 CHEVY VAN",
         descripcion: "MATCHBOX",
-        imagen: "carro70.png"
+        imagenes: ["carro70.png", "img-segundarias/carro70.70.png"]
       },
 
       {
@@ -745,43 +846,6 @@
       },
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
     ];
 
     while (carros.length < 100) {
@@ -795,26 +859,29 @@
     carros.forEach((carro, i) => {
       const col = document.createElement("div");
       col.className = "col-6 col-md-4 col-lg-3 mb-4";
+
+      const imagenPrincipal = carro.imagen || (carro.imagenes && carro.imagenes[0]) || "placeholder.png";
+
       col.innerHTML = `
-    <div class="card h-100 position-relative" data-index="${i}">
-      <img src="${carro.imagen}" class="card-img-top" alt="${carro.nombre}">
-      <div class="card-body">
-        <h5 class="card-title">${carro.nombre}</h5>
+  <div class="card h-100 position-relative" data-index="${i}">
+    <img src="${imagenPrincipal}" class="card-img-top" alt="${carro.nombre}">
+    <div class="card-body">
+      <h5 class="card-title">${carro.nombre}</h5>
       <p class="card-text" style="
-  background-color: ${carro.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
+        background-color: ${carro.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
           carro.descripcion.toLowerCase() === 'matchbox' ? '#F07013' :
             'transparent'};
-  color: black;
-  padding: 4px;
-  border-radius: 6px;
-">
-  ${carro.descripcion}
-</p>
-
-      </div>
-      <span class="badge-numero"># ${i + 1}</span>
-    </div>`;
+        color: black;
+        padding: 4px;
+        border-radius: 6px;">
+        ${carro.descripcion}
+      </p>
+    </div>
+    <span class="badge-numero"># ${i + 1}</span>
+  </div>
+`;
       galeria.appendChild(col);
+
     });
 
 
@@ -824,18 +891,44 @@
         card.addEventListener("click", function () {
           const index = this.getAttribute("data-index");
           const carro = carros[index];
-          detalleImg.src = carro.imagen;
+
+          const imagenPrincipal = carro.imagen || (carro.imagenes && carro.imagenes[0]);
+          const imagenesSecundarias = carro.imagenes?.filter(src => src !== imagenPrincipal) || [];
+
+          if (imagenesSecundarias.length > 0) {
+            // Mostrar solo las secundarias (excluyendo la que ya está en la galería)
+            detalleImg.innerHTML = `
+    <div class="d-flex flex-column align-items-center">
+      ${imagenesSecundarias.map(src =>
+              `<img src="${src}" class="img-fluid m-2" style="max-width: 90%; cursor: pointer;">`
+            ).join("")}
+    </div>
+  `;
+          } else if (imagenPrincipal) {
+            // Si no hay más imágenes, mostrar al menos la principal
+            detalleImg.innerHTML = `
+    <img src="${imagenPrincipal}" class="img-fluid m-2" style="max-width: 100%;">
+  `;
+          } else {
+            // No hay imágenes
+            detalleImg.innerHTML = `<p>No hay imágenes disponibles.</p>`;
+          }
+
+
           detalleTitulo.textContent = carro.nombre;
-          detalleDesc.innerHTML = `<span style="
-  background-color: ${carro.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
-              carro.descripcion.toLowerCase() === 'matchbox' ? '#F07013' :
-                'transparent'};
-  color: black;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: bold;
-  display: inline-block;
-">${carro.descripcion}</span>`;
+       detalleDesc.innerHTML = `
+  <span style="
+    background-color: ${carro.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
+      carro.descripcion.toLowerCase() === 'matchbox' ? '#F07013' :
+      'transparent'};
+    color: black;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;">
+    ${carro.descripcion}
+  </span>
+`;
 
 
           galeria.style.display = "none";
@@ -845,6 +938,8 @@
         });
       });
     }
+
+
 
     asignarEventosClick();
 
@@ -882,6 +977,7 @@
         mensajeNoEncontrado.style.display = "none";
         btnVolverBusqueda.style.display = "block";
       }
+asignarEventosClick();
 
     }
 
@@ -914,6 +1010,77 @@
       document.getElementById("busqueda").value = "";
 
     }
+
+
+    let carroActualIndex = 0;
+
+// Mostrar el detalle de un carro por índice
+function mostrarDetalle(index) {
+  const carro = carros[index];
+  carroActualIndex = index;
+
+  // Muestra imagen o imágenes del carro
+  const imagenPrincipal = carro.imagen || (carro.imagenes && carro.imagenes[0]);
+  const imagenesSecundarias = carro.imagenes?.filter(src => src !== imagenPrincipal) || [];
+
+  if (imagenesSecundarias.length > 0) {
+    detalleImg.innerHTML = imagenesSecundarias.map(src =>
+      `<img src="${src}" class="img-fluid m-2" style="max-width: 90%;">`
+    ).join("");
+  } else {
+    detalleImg.innerHTML = `<img src="${imagenPrincipal}" class="img-fluid m-2" style="max-width: 100%;">`;
+  }
+
+  // Título y descripción
+  detalleTitulo.textContent = carro.nombre;
+  detalleDesc.innerHTML = `
+    <span style="background-color: ${
+      carro.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
+      carro.descripcion.toLowerCase() === 'matchbox' ? '#F07013' : 'gray'
+    }; color: white; padding: 4px 8px; border-radius: 6px;">
+      ${carro.descripcion}
+    </span>
+  `;
+
+  // Mostrar/ocultar botones
+  galeria.style.display = "none";
+  detalle.style.display = "block";
+
+  document.getElementById("btnAnterior").style.visibility = index > 0 ? "visible" : "hidden";
+  document.getElementById("btnSiguiente").style.visibility = index < carros.length - 1 ? "visible" : "hidden";
+}
+
+// Asignar eventos de clic a cada tarjeta
+function asignarEventosClick() {
+  const tarjetas = document.querySelectorAll(".card[data-index]");
+  tarjetas.forEach(tarjeta => {
+    tarjeta.addEventListener("click", function () {
+      const index = parseInt(this.getAttribute("data-index"));
+      mostrarDetalle(index);
+    });
+  });
+}
+
+// Botón anterior
+document.getElementById("btnAnterior").addEventListener("click", () => {
+  if (carroActualIndex > 0) {
+    mostrarDetalle(carroActualIndex - 1);
+  }
+});
+
+// Botón siguiente
+document.getElementById("btnSiguiente").addEventListener("click", () => {
+  if (carroActualIndex < carros.length - 1) {
+    mostrarDetalle(carroActualIndex + 1);
+  }
+});
+
+// Volver a galería
+function mostrarGaleria() {
+  detalle.style.display = "none";
+  galeria.style.display = "flex";
+}
+
   </script>
   <script>
     document.getElementById("busqueda").addEventListener("keypress", function (e) {

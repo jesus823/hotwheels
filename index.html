@@ -1168,6 +1168,21 @@
       document.getElementById("busqueda").value = "";
     }
 
+// Al entrar al detalle del carro, empuja un nuevo estado al historial
+function mostrarDetalle(index) {
+  // ... tu código existente aquí ...
+
+  history.pushState({ vista: 'detalle' }, null); // Agrega estado al historial
+
+  // Resto de tu función mostrarDetalle...
+}
+
+// Detectar cuando el usuario presiona "atrás"
+window.addEventListener("popstate", function (event) {
+  if (event.state && event.state.vista === 'detalle') {
+    mostrarGaleria(); // Vuelve a galería si estaba en detalle
+  }
+});
 
   </script>
   <script>

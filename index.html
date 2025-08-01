@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -212,65 +211,62 @@
     }
 
     .imagen-con-botones {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
 
 
 
-.vista-detalle-carrusel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  padding: 40px 10px;
-  gap: 10px;
-}
+    .vista-detalle-carrusel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      padding: 40px 10px;
+      gap: 10px;
+    }
 
-.vista-detalle-carrusel img {
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  border-radius: 12px;
-  border: 2px solid black;
-  max-height: 350px;
-  object-fit: contain;
-}
+    .vista-detalle-carrusel img {
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      border-radius: 12px;
+      border: 2px solid black;
+      max-height: 350px;
+      object-fit: contain;
+    }
 
-.vista-central {
-  width: 75%;
-  z-index: 2;
-}
+    .vista-central {
+      width: 75%;
+      z-index: 2;
+    }
 
-.vista-lateral {
-  width: 20%;
-  opacity: 0.4;
-  transform: scale(0.9);
-  z-index: 1;
-}
-
-
-
-.detalle-numero {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 12px;
-  background-color: #e0e0e0;
-  color: black;
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-weight: bold;
-  border: 1px solid black;
-}
+    .vista-lateral {
+      width: 20%;
+      opacity: 0.4;
+      transform: scale(0.9);
+      z-index: 1;
+    }
 
 
 
+    .detalle-numero {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 12px;
+      background-color: #e0e0e0;
+      color: black;
+      padding: 4px 8px;
+      border-radius: 8px;
+      font-weight: bold;
+      border: 1px solid black;
+    }
   </style>
 </head>
 
@@ -329,26 +325,26 @@
     <div id="galeria" class="row mt-4"></div>
 
     <div id="detalle" class="detalle-carro mt-5">
-    <button class="btn btn-secondary mb-3" onclick="mostrarGaleria()"
-  style="background-color: rgb(89, 246, 115); color: black; font-weight: bold;">
-  ← Volver a galería
-</button>
+      <button class="btn btn-secondary mb-3" onclick="mostrarGaleria()"
+        style="background-color: rgb(89, 246, 115); color: black; font-weight: bold;">
+        ← Volver a galería
+      </button>
 
 
 
-<!-- CARRUSEL FUERA DE LA TARJETA -->
-<div id="detalle-img" class="d-flex flex-wrap justify-content-center" style="margin-bottom: 10px;"></div>
+      <!-- CARRUSEL FUERA DE LA TARJETA -->
+      <div id="detalle-img" class="d-flex flex-wrap justify-content-center" style="margin-bottom: 10px;"></div>
 
 
-<!-- TARJETA SOLO PARA TÍTULO Y DESCRIPCIÓN -->
-<!-- TARJETA SOLO PARA TÍTULO Y DESCRIPCIÓN -->
-<div class="card mx-auto" style="max-width: 400px; margin-top: -40px;">
+      <!-- TARJETA SOLO PARA TÍTULO Y DESCRIPCIÓN -->
+      <!-- TARJETA SOLO PARA TÍTULO Y DESCRIPCIÓN -->
+      <div class="card mx-auto" style="max-width: 400px; margin-top: -40px;">
 
-  <div class="card-body">
-    <h5 id="detalle-titulo" class="card-title"></h5>
-    <p id="detalle-desc" class="card-text"></p>
-  </div>
-</div>
+        <div class="card-body">
+          <h5 id="detalle-titulo" class="card-title"></h5>
+          <p id="detalle-desc" class="card-text"></p>
+        </div>
+      </div>
 
 
 
@@ -441,7 +437,7 @@
   <script>
 
     let indexCarrusel = 0;
-let carrosCarrusel = []; // se llena al entrar a mostrarDetalle
+    let carrosCarrusel = []; // se llena al entrar a mostrarDetalle
 
 
     const galeria = document.getElementById("galeria");
@@ -740,7 +736,7 @@ let carrosCarrusel = []; // se llena al entrar a mostrarDetalle
       {  /*  no tiene mas vistas */
         nombre: "--sin nombre--",
         descripcion: "Hot Wheels",
-       imagenes: ["carro48.png", "carro48.png"]
+        imagenes: ["carro48.png", "carro48.png"]
       },
 
       {
@@ -812,7 +808,7 @@ let carrosCarrusel = []; // se llena al entrar a mostrarDetalle
       { /*  no tiene mas vistas */
         nombre: " HOT SELLING RAIL CARS",
         descripcion: "Hot Wheels",
-         imagenes: ["carro60.png", "carro60.png"]
+        imagenes: ["carro60.png", "carro60.png"]
       },
 
       {
@@ -878,36 +874,36 @@ let carrosCarrusel = []; // se llena al entrar a mostrarDetalle
       {
         nombre: "Chevrolet Camaro SS",
         descripcion: "2010 - 2013",
-       imagenes: ["carro71.png", "carro71.png"]
+        imagenes: ["carro71.png", "img-segundarias/carro71.71.png"]
       },
 
       {
         nombre: " Volkswagen Kombi ",
         descripcion: "1950-1970",
-       imagenes: ["carro72.png", "carro72.png"]
+        imagenes: ["carro72.png", "img-segundarias/carro72.72.png"]
       },
 
       {
         nombre: " Van ",
         descripcion: "---",
-    imagenes: ["carro73.png", "carro73.png"]
+        imagenes: ["carro73.png", "img-segundarias/carro73.73.png"]
       },
       {
         nombre: "Volkswagen Fusca",
         descripcion: "1967",
-         imagenes: ["carro74.png", "carro74.png"]
+        imagenes: ["carro74.png", "img-segundarias/carro74.74.png"]
       },
 
       {
         nombre: "Ford Model T Panel Van",
         descripcion: "1923-1926",
-         imagenes: ["carro75.png", "carro75.png"]
+        imagenes: ["carro75.png", "img-segundarias/carro75.75.png"]
       },
 
       {
         nombre: "F-16 Fighting Falcon",
         descripcion: "---",
-         imagenes: ["avion76.png", "avion76.png"]
+        imagenes: ["avion76.png", "img-segundarias/avion76.76.png"]
       },
 
 
@@ -951,14 +947,14 @@ let carrosCarrusel = []; // se llena al entrar a mostrarDetalle
 
 
 
-function asignarEventosClick() {
-  document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", function () {
-      const index = parseInt(this.getAttribute("data-index"));
-      mostrarDetalle(index); // esta sí usa el carrusel completo
-    });
-  });
-}
+    function asignarEventosClick() {
+      document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("click", function () {
+          const index = parseInt(this.getAttribute("data-index"));
+          mostrarDetalle(index); // esta sí usa el carrusel completo
+        });
+      });
+    }
 
 
 
@@ -999,7 +995,7 @@ function asignarEventosClick() {
         mensajeNoEncontrado.style.display = "none";
         btnVolverBusqueda.style.display = "block";
       }
-asignarEventosClick();
+      asignarEventosClick();
 
     }
 
@@ -1036,36 +1032,36 @@ asignarEventosClick();
 
     let carroActualIndex = 0;
 
-function mostrarDetalle(index) {
-  const carroClicado = carros[index];
+    function mostrarDetalle(index) {
+      const carroClicado = carros[index];
 
-  // Verificamos si tiene imagen .1, .2, etc. (vista extra)
-  const vistaExtra = carroClicado.imagenes?.find(img => /\.\d+\.png$/.test(img));
-  if (!vistaExtra) return;
+      // Verificamos si tiene imagen .1, .2, etc. (vista extra)
+      const vistaExtra = carroClicado.imagenes?.find(img => /\.\d+\.png$/.test(img));
+      if (!vistaExtra) return;
 
-  // Filtramos todos los carros que tienen imagen .1, .2, .3, etc.
-  const carrosConVistaExtra = carros.filter(c =>
-    c.imagenes?.some(img => /\.\d+\.png$/.test(img))
-  );
+      // Filtramos todos los carros que tienen imagen .1, .2, .3, etc.
+      const carrosConVistaExtra = carros.filter(c =>
+        c.imagenes?.some(img => /\.\d+\.png$/.test(img))
+      );
 
-  // Buscamos el índice real del carro clicado en la lista filtrada
-  const indexEnVistaExtra = carrosConVistaExtra.findIndex(c => c === carroClicado);
+      // Buscamos el índice real del carro clicado en la lista filtrada
+      const indexEnVistaExtra = carrosConVistaExtra.findIndex(c => c === carroClicado);
 
-  const anterior = indexEnVistaExtra > 0 ? carrosConVistaExtra[indexEnVistaExtra - 1] : null;
-  const actual = carrosConVistaExtra[indexEnVistaExtra];
-  const siguiente = indexEnVistaExtra < carrosConVistaExtra.length - 1 ? carrosConVistaExtra[indexEnVistaExtra + 1] : null;
+      const anterior = indexEnVistaExtra > 0 ? carrosConVistaExtra[indexEnVistaExtra - 1] : null;
+      const actual = carrosConVistaExtra[indexEnVistaExtra];
+      const siguiente = indexEnVistaExtra < carrosConVistaExtra.length - 1 ? carrosConVistaExtra[indexEnVistaExtra + 1] : null;
 
-  detalleImg.innerHTML =carrosCarrusel = carros.filter(c =>
-  c.imagenes?.some(img => /\.\d+\.png$/.test(img))
-);
-indexCarrusel = carrosCarrusel.findIndex(c => c === carroClicado);
+      detalleImg.innerHTML = carrosCarrusel = carros.filter(c =>
+        c.imagenes?.some(img => /\.\d+\.png$/.test(img))
+      );
+      indexCarrusel = carrosCarrusel.findIndex(c => c === carroClicado);
 
-function renderCarrusel() {
-  const anterior = indexCarrusel > 0 ? carrosCarrusel[indexCarrusel - 1] : null;
-  const actual = carrosCarrusel[indexCarrusel];
-  const siguiente = indexCarrusel < carrosCarrusel.length - 1 ? carrosCarrusel[indexCarrusel + 1] : null;
+      function renderCarrusel() {
+        const anterior = indexCarrusel > 0 ? carrosCarrusel[indexCarrusel - 1] : null;
+        const actual = carrosCarrusel[indexCarrusel];
+        const siguiente = indexCarrusel < carrosCarrusel.length - 1 ? carrosCarrusel[indexCarrusel + 1] : null;
 
-  detalleImg.innerHTML = `
+        detalleImg.innerHTML = `
     <div class="vista-detalle-carrusel" id="carrusel-contenedor">
       ${anterior ? `<img src="${anterior.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-lateral">` : ""}
       <img src="${actual.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-central">
@@ -1073,106 +1069,104 @@ function renderCarrusel() {
     </div>
   `;
 
-  // actualiza título y descripción
-  detalleTitulo.innerHTML = `
+        // actualiza título y descripción
+        detalleTitulo.innerHTML = `
     ${actual.nombre}
     <span class="detalle-numero">#${carros.indexOf(actual) + 1}</span>
   `;
 
-  detalleDesc.innerHTML = `
-    <span style="background-color: ${
-      actual.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
-      actual.descripcion.toLowerCase() === 'matchbox' ? '#F07013' : 'gray'
-    }; color: white; padding: 4px 8px; border-radius: 6px;">
+        detalleDesc.innerHTML = `
+    <span style="background-color: ${actual.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
+            actual.descripcion.toLowerCase() === 'matchbox' ? '#F07013' : 'gray'
+          }; color: white; padding: 4px 8px; border-radius: 6px;">
       ${actual.descripcion}
     </span>
   `;
 
-  // evento táctil
-  const contenedor = document.getElementById("carrusel-contenedor");
-  let startX = 0;
+        // evento táctil
+        const contenedor = document.getElementById("carrusel-contenedor");
+        let startX = 0;
 
-  contenedor.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-  });
+        contenedor.addEventListener("touchstart", e => {
+          startX = e.touches[0].clientX;
+        });
 
-  contenedor.addEventListener("touchend", e => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = endX - startX;
+        contenedor.addEventListener("touchend", e => {
+          const endX = e.changedTouches[0].clientX;
+          const diff = endX - startX;
 
-    if (diff > 50 && indexCarrusel > 0) {
-      indexCarrusel--; // desliza a la izquierda
-      renderCarrusel();
-    } else if (diff < -50 && indexCarrusel < carrosCarrusel.length - 1) {
-      indexCarrusel++; // desliza a la derecha
-      renderCarrusel();
-    }
-  });
+          if (diff > 50 && indexCarrusel > 0) {
+            indexCarrusel--; // desliza a la izquierda
+            renderCarrusel();
+          } else if (diff < -50 && indexCarrusel < carrosCarrusel.length - 1) {
+            indexCarrusel++; // desliza a la derecha
+            renderCarrusel();
+          }
+        });
 
-  // Evento para hacer clic en la imagen lateral y cambiar la central
-const imagenesCarrusel = document.querySelectorAll("#carrusel-contenedor img");
+        // Evento para hacer clic en la imagen lateral y cambiar la central
+        const imagenesCarrusel = document.querySelectorAll("#carrusel-contenedor img");
 
-imagenesCarrusel.forEach((img, idx) => {
-  img.addEventListener("click", () => {
-    if (img.classList.contains("vista-lateral")) {
-      if (idx === 0 && indexCarrusel > 0) {
-        indexCarrusel--; // clic en imagen izquierda
-        renderCarrusel();
-      } else if (idx === 2 && indexCarrusel < carrosCarrusel.length - 1) {
-        indexCarrusel++; // clic en imagen derecha
-        renderCarrusel();
+        imagenesCarrusel.forEach((img, idx) => {
+          img.addEventListener("click", () => {
+            if (img.classList.contains("vista-lateral")) {
+              if (idx === 0 && indexCarrusel > 0) {
+                indexCarrusel--; // clic en imagen izquierda
+                renderCarrusel();
+              } else if (idx === 2 && indexCarrusel < carrosCarrusel.length - 1) {
+                indexCarrusel++; // clic en imagen derecha
+                renderCarrusel();
+              }
+            }
+          });
+        });
+
       }
-    }
-  });
-});
 
-}
-
-renderCarrusel();
+      renderCarrusel();
 
 
-  detalleTitulo.textContent = actual.nombre;
-const numeroCarro = carros.indexOf(actual) + 1;
-detalleTitulo.innerHTML = `
+      detalleTitulo.textContent = actual.nombre;
+      const numeroCarro = carros.indexOf(actual) + 1;
+      detalleTitulo.innerHTML = `
   ${actual.nombre}
   <span class="detalle-numero">#${numeroCarro}</span>
 `;
 
 
-  detalleDesc.innerHTML = `
-    <span style="background-color: ${
-      actual.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
-      actual.descripcion.toLowerCase() === 'matchbox' ? '#F07013' : 'gray'
-    }; color: white; padding: 4px 8px; border-radius: 6px;">
+      detalleDesc.innerHTML = `
+    <span style="background-color: ${actual.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
+          actual.descripcion.toLowerCase() === 'matchbox' ? '#F07013' : 'gray'
+        }; color: white; padding: 4px 8px; border-radius: 6px;">
       ${actual.descripcion}
     </span>
   `;
 
-  galeria.style.display = "none";
-  detalle.style.display = "block";
-  mensajeNoEncontrado.style.display = "none";
-  btnVolverBusqueda.style.display = "none";
-}
+      galeria.style.display = "none";
+      detalle.style.display = "block";
+      mensajeNoEncontrado.style.display = "none";
+      btnVolverBusqueda.style.display = "none";
+    }
 
 
 
 
 
 
-// Volver a galería
-function mostrarGaleria() {
-  detalle.style.display = "none";
-  galeria.style.display = "flex";
-  mensajeNoEncontrado.style.display = "none";
-  btnVolverBusqueda.style.display = "none";
+    // Volver a galería
+    function mostrarGaleria() {
+      detalle.style.display = "none";
+      galeria.style.display = "flex";
+      mensajeNoEncontrado.style.display = "none";
+      btnVolverBusqueda.style.display = "none";
 
-  // Asegúrate de mostrar todas las tarjetas
-  document.querySelectorAll(".col-6, .col-md-4, .col-lg-3").forEach(card => {
-    card.style.display = "block";
-  });
+      // Asegúrate de mostrar todas las tarjetas
+      document.querySelectorAll(".col-6, .col-md-4, .col-lg-3").forEach(card => {
+        card.style.display = "block";
+      });
 
-  document.getElementById("busqueda").value = "";
-}
+      document.getElementById("busqueda").value = "";
+    }
 
 
   </script>

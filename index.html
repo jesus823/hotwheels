@@ -269,41 +269,6 @@
 }
 
 
-@media (max-width: 768px) {
-  .vista-detalle-carrusel {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 10px;
-    padding: 20px 10px;
-  }
-
-  .vista-detalle-carrusel img {
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-  }
-
-  .vista-detalle-carrusel {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-
-  .vista-central, .vista-lateral {
-    min-width: 70%;
-    max-width: 90%;
-  }
-
-  .vista-lateral {
-    opacity: 0.4;
-    transform: scale(0.9);
-  }
-
-  .vista-central {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 
   </style>
 </head>
@@ -470,6 +435,10 @@
 
 
   <script>
+
+    let indexCarrusel = 0;
+let carrosCarrusel = []; // se llena al entrar a mostrarDetalle
+
 
     const galeria = document.getElementById("galeria");
     const detalle = document.getElementById("detalle");
@@ -1082,13 +1051,63 @@ function mostrarDetalle(index) {
   const actual = carrosConVistaExtra[indexEnVistaExtra];
   const siguiente = indexEnVistaExtra < carrosConVistaExtra.length - 1 ? carrosConVistaExtra[indexEnVistaExtra + 1] : null;
 
+  detalleImg.innerHTML =carrosCarrusel = carros.filter(c =>
+  c.imagenes?.some(img => /\.\d+\.png$/.test(img))
+);
+indexCarrusel = carrosCarrusel.findIndex(c => c === carroClicado);
+
+function renderCarrusel() {
+  const anterior = indexCarrusel > 0 ? carrosCarrusel[indexCarrusel - 1] : null;
+  const actual = carrosCarrusel[indexCarrusel];
+  const siguiente = indexCarrusel < carrosCarrusel.length - 1 ? carrosCarrusel[indexCarrusel + 1] : null;
+
   detalleImg.innerHTML = `
-    <div class="vista-detalle-carrusel">
-      ${anterior ? `<img src="${anterior.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-lateral" onclick="mostrarDetalle(${carros.indexOf(anterior)})">` : ""}
+    <div class="vista-detalle-carrusel" id="carrusel-contenedor">
+      ${anterior ? `<img src="${anterior.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-lateral">` : ""}
       <img src="${actual.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-central">
-      ${siguiente ? `<img src="${siguiente.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-lateral" onclick="mostrarDetalle(${carros.indexOf(siguiente)})">` : ""}
+      ${siguiente ? `<img src="${siguiente.imagenes.find(img => /\.\d+\.png$/.test(img))}" class="vista-lateral">` : ""}
     </div>
   `;
+
+  // actualiza título y descripción
+  detalleTitulo.innerHTML = `
+    ${actual.nombre}
+    <span class="detalle-numero">#${carros.indexOf(actual) + 1}</span>
+  `;
+
+  detalleDesc.innerHTML = `
+    <span style="background-color: ${
+      actual.descripcion.toLowerCase() === 'hot wheels' ? '#27A3F5' :
+      actual.descripcion.toLowerCase() === 'matchbox' ? '#F07013' : 'gray'
+    }; color: white; padding: 4px 8px; border-radius: 6px;">
+      ${actual.descripcion}
+    </span>
+  `;
+
+  // evento táctil
+  const contenedor = document.getElementById("carrusel-contenedor");
+  let startX = 0;
+
+  contenedor.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  contenedor.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    if (diff > 50 && indexCarrusel > 0) {
+      indexCarrusel--; // desliza a la izquierda
+      renderCarrusel();
+    } else if (diff < -50 && indexCarrusel < carrosCarrusel.length - 1) {
+      indexCarrusel++; // desliza a la derecha
+      renderCarrusel();
+    }
+  });
+}
+
+renderCarrusel();
+
 
   detalleTitulo.textContent = actual.nombre;
 const numeroCarro = carros.indexOf(actual) + 1;
@@ -1111,37 +1130,6 @@ detalleTitulo.innerHTML = `
   detalle.style.display = "block";
   mensajeNoEncontrado.style.display = "none";
   btnVolverBusqueda.style.display = "none";
-
-  let touchStartX = 0;
-
-detalleImg.addEventListener("touchstart", (e) => {
-  touchStartX = e.touches[0].clientX;
-});
-
-detalleImg.addEventListener("touchend", (e) => {
-  const touchEndX = e.changedTouches[0].clientX;
-  const diffX = touchEndX - touchStartX;
-
-  if (Math.abs(diffX) > 50) { // Umbral mínimo
-    const carrosConVistaExtra = carros.filter(c =>
-      c.imagenes?.some(img => /\.\d+\.png$/.test(img))
-    );
-
-    const carroActual = carros[carroActualIndex];
-    const indexEnVistaExtra = carrosConVistaExtra.findIndex(c => c === carroActual);
-
-    if (diffX < 0 && indexEnVistaExtra < carrosConVistaExtra.length - 1) {
-      // Swipe izquierda: siguiente
-      const siguiente = carrosConVistaExtra[indexEnVistaExtra + 1];
-      mostrarDetalle(carros.indexOf(siguiente));
-    } else if (diffX > 0 && indexEnVistaExtra > 0) {
-      // Swipe derecha: anterior
-      const anterior = carrosConVistaExtra[indexEnVistaExtra - 1];
-      mostrarDetalle(carros.indexOf(anterior));
-    }
-  }
-});
-
 }
 
 

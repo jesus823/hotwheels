@@ -267,30 +267,45 @@
       font-weight: bold;
       border: 1px solid black;
     }
-
 .vista-general {
-  flex: 0 0 20%; /* 5 columnas */
-  max-width: 20%;
-  padding: 4px;
+  flex: 0 0 auto;
+  width: 16.66%; /* 6 columnas */
+  padding: 5px !important;
 }
 
-.vista-general .card {
+.vista-general .card,
+.vista-general .card-body,
+.vista-general .fondo {
+  background: none !important;
   border: none !important;
   box-shadow: none !important;
-  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
 }
 
+.vista-general h5,
+.vista-general p,
+.vista-general button,
+.vista-general .card-body {
+  display: none !important;
+}
+
+.vista-general img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0 !important;
+}
+
+
+.vista-general h5,
+.vista-general p,
+.vista-general button,
 .vista-general .card-body,
 .vista-general .badge-numero {
   display: none !important;
 }
-
-.vista-general .card-img-top {
-  height: 100px;
-  object-fit: contain;
-  border: none;
-}
-
 
   </style>
 </head>

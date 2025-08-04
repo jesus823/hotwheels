@@ -307,6 +307,38 @@
   display: none !important;
 }
 
+
+
+
+.vista-general .row {
+  --bs-gutter-y: 0; /* quita el espacio vertical entre filas */
+  margin-bottom: 0;  /* quita margen inferior */
+}
+.vista-general .col {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.vista-general .card {
+  background: none;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+}
+
+.vista-general .card-body {
+  padding: 0;
+}
+.vista-general img {
+  width: 100%;
+  max-width: 100px; /* o ajusta al tamaño deseado */
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+
+
   </style>
 </head>
 
@@ -1316,5 +1348,6 @@ function activarVistaGeneral() {
 </body>
 
 </html>
+
 
 

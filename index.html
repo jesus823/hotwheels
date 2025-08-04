@@ -268,57 +268,29 @@
       border: 1px solid black;
     }
 
+.vista-general {
+  flex: 0 0 20%; /* 5 columnas */
+  max-width: 20%;
+  padding: 4px;
+}
 
+.vista-general .card {
+  border: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
 
-    .minimizada .card-body,
-.minimizada .badge-numero {
+.vista-general .card-body,
+.vista-general .badge-numero {
   display: none !important;
 }
 
-.minimizada .card-img-top {
-  height: 60px !important;
+.vista-general .card-img-top {
+  height: 100px;
   object-fit: contain;
+  border: none;
 }
 
-
-/* Oculta completamente la tarjeta en vista minimizada */
-.minimizada .card {
-  all: unset;
-  display: inline-block;
-  margin: 5px;
-}
-
-/* Solo muestra imagen pequeña */
-.minimizada .card img.card-img-top {
-  width: 80px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 5px;
-  box-shadow: 0 0 3px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
-
-/* Desactiva clics */
-.minimizada .card a {
-  pointer-events: none;
-  cursor: default;
-}
-.minimizada .row {
-  --bs-gutter-x: 0rem !important; /* Elimina el espacio horizontal entre columnas */
-  --bs-gutter-y: 0rem !important; /* Elimina el espacio vertical entre filas */
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  row-gap: 0 !important;
-  column-gap: 0 !important;
-}
-
-.minimizada .col-6,
-.minimizada .col-md-4,
-.minimizada .col-lg-3 {
-  padding-left: 2px !important;
-  padding-right: 2px !important;
-  margin-bottom: 4px !important;
-}
 
   </style>
 </head>
@@ -329,9 +301,15 @@
     <img src="inicio.png" alt="Inicio" title="Ir al inicio" style="border-radius: 50px;" />
   </a>
 
-<button id="btnVistaGeneral" onclick="activarVistaGeneral()" style="position: fixed; top: 10px; left: 60px; z-index: 1001; background-color: white; border: 2px solid black; border-radius: 10px; font-weight: bold; padding: 5px 10px; box-shadow: 2px 2px 6px rgba(0,0,0,0.5);">
+
+
+<button id="btnVistaGeneral" onclick="activarVistaGeneral()" 
+  style="position: fixed; top: 10px; left: 70px; z-index: 1001; font-weight: bold;
+         background-color: white; border: 2px solid black; border-radius: 8px; padding: 4px 8px;">
   Vista general
 </button>
+
+
 
   <div class="fondo"></div>
   <header>
@@ -962,7 +940,7 @@
         imagenes: ["avion76.png", "img-segundarias/avion76.76.png"]
       },
 
-      {
+     {
         nombre: "Ram Work Truck ",
         descripcion: "MATCHBOX",
              imagenes: ["carro77.png", "img-segundarias/carro77.77.png"]
@@ -971,29 +949,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
     ];
 
     while (carros.length < 100) {
@@ -1109,12 +1065,24 @@
       bannerIndex = (bannerIndex + 1) % banners.length; // Avanza
       banners[bannerIndex].style.display = "block"; // Muestra el siguiente
     }, 4000); // cada 3 segundos
-    function volverAlInicio() {
-      scrollToTop();       // hace scroll suave al inicio
-      mostrarGaleria();    // muestra la galería y oculta el detalle
-      document.getElementById("busqueda").value = "";
+ function volverAlInicio() {
+  detalle.style.display = "none";
+  galeria.style.display = "flex";
 
-    }
+  // Restaurar clases normales si venía de "Vista general"
+  const columnas = galeria.querySelectorAll(".vista-general");
+  columnas.forEach(col => {
+    col.classList.remove("vista-general");
+    col.classList.add("col-6", "col-md-4", "col-lg-3");
+  });
+
+  // Ocultar botón "Vista completa"
+  document.getElementById("btnVistaCompleta").style.display = "none";
+
+  // Scroll al inicio
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 
 
     let carroActualIndex = 0;
@@ -1260,7 +1228,60 @@ history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
     }
 
 
+function activarVistaGeneral() {
+  detalle.style.display = "none";
+  galeria.style.display = "flex";
+
+  mensajeNoEncontrado.style.display = "none";
+  btnVolverBusqueda.style.display = "none";
+  document.getElementById("busqueda").value = "";
+
+  const columnas = galeria.querySelectorAll(".col-6, .col-md-4, .col-lg-3");
+  columnas.forEach(col => {
+    col.classList.remove("col-6", "col-md-4", "col-lg-3");
+    col.classList.add("vista-general");
+  });
+}
+
+
+function activarVistaGeneral() {
+  // Oculta la vista detalle
+  detalle.style.display = "none";
+
+  // Muestra la galería
+  galeria.style.display = "flex";
+
+  // Aplica clase personalizada a cada columna
+  galeria.querySelectorAll(".col-6, .col-md-4, .col-lg-3").forEach(col => {
+    col.classList.remove("col-6", "col-md-4", "col-lg-3");
+    col.classList.add("vista-general");
+  });
+
+  // También ocultamos los elementos de búsqueda y resultado
+  mensajeNoEncontrado.style.display = "none";
+  btnVolverBusqueda.style.display = "none";
+}
+
+
+
+
   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script>
     document.getElementById("busqueda").addEventListener("keypress", function (e) {
       if (e.key === "Enter") {
@@ -1274,23 +1295,11 @@ history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
   }
 });
 
-
-function activarVistaGeneral() {
-  const galeria = document.getElementById("galeria");
-  galeria.classList.toggle("minimizada");
-
-  const btn = document.getElementById("btnVistaGeneral");
-  if (galeria.classList.contains("minimizada")) {
-    btn.textContent = "Vista completa";
-  } else {
-    btn.textContent = "Vista general";
-  }
-}
-
-
   </script>
 
 
 </body>
 
 </html>
+
+

@@ -331,11 +331,15 @@
 }
 .vista-general img {
   width: 100%;
-  max-width: 100px; /* o ajusta al tamaño deseado */
+  max-width: 100px;
   height: auto;
   display: block;
   margin: auto;
+  border-radius: 7px !important;
 }
+
+
+
 
 
 
@@ -1112,23 +1116,41 @@
       bannerIndex = (bannerIndex + 1) % banners.length; // Avanza
       banners[bannerIndex].style.display = "block"; // Muestra el siguiente
     }, 4000); // cada 3 segundos
- function volverAlInicio() {
+function volverAlInicio() {
+  // Oculta la vista detalle (si está visible)
   detalle.style.display = "none";
+
+  // Muestra la galería
   galeria.style.display = "flex";
 
-  // Restaurar clases normales si venía de "Vista general"
+  // Restaura clases normales si estabas en vista general
   const columnas = galeria.querySelectorAll(".vista-general");
   columnas.forEach(col => {
     col.classList.remove("vista-general");
     col.classList.add("col-6", "col-md-4", "col-lg-3");
   });
 
-  // Ocultar botón "Vista completa"
-  document.getElementById("btnVistaCompleta").style.display = "none";
+  // Vuelve a mostrar la barra de búsqueda
+  const barraBusqueda = document.querySelector('.search-bar');
+  if (barraBusqueda) barraBusqueda.style.display = 'flex';
 
-  // Scroll al inicio
+  // Opcional: limpiar resultados previos de búsqueda o scroll
+  mensajeNoEncontrado.style.display = "none";
+  btnVolverBusqueda.style.display = "none";
+
+  // Scroll arriba
   window.scrollTo({ top: 0, behavior: "smooth" });
+  document.querySelectorAll(".col-6, .col-md-4, .col-lg-3").forEach(col => {
+  col.style.display = "block";
+
+  document.querySelectorAll(".card").forEach(card => {
+  card.style.pointerEvents = "auto";
+  card.style.cursor = "pointer";
+});
+
+});
 }
+
 
 
 
@@ -1274,40 +1296,37 @@ history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
       document.getElementById("busqueda").value = "";
     }
 
+  function activarVistaGeneral() {
+    detalle.style.display = "none";
+    galeria.style.display = "flex";
 
-function activarVistaGeneral() {
-  detalle.style.display = "none";
-  galeria.style.display = "flex";
+    // Oculta elementos de búsqueda
+    mensajeNoEncontrado.style.display = "none";
+    btnVolverBusqueda.style.display = "none";
+    document.getElementById("busqueda").value = "";
+    document.querySelector('.search-bar').style.display = "none";
 
-  mensajeNoEncontrado.style.display = "none";
-  btnVolverBusqueda.style.display = "none";
-  document.getElementById("busqueda").value = "";
+    // Aplica clases para vista general
+    document.querySelectorAll("#galeria .col-6, #galeria .col-md-4, #galeria .col-lg-3").forEach(col => {
+      col.classList.remove("col-6", "col-md-4", "col-lg-3");
+      col.classList.add("vista-general");
+    });
 
-  const columnas = galeria.querySelectorAll(".col-6, .col-md-4, .col-lg-3");
-  columnas.forEach(col => {
-    col.classList.remove("col-6", "col-md-4", "col-lg-3");
-    col.classList.add("vista-general");
-  });
-}
+    // ❌ Elimina eventos de clic
+    document.querySelectorAll(".card").forEach(card => {
+      card.style.pointerEvents = "none"; // Desactiva los clics
+      card.style.cursor = "default";     // Quita el cursor de clic
+    });
+
+    // Scroll arriba
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.querySelector(".fondo").style.backgroundImage = "url('fondo2.jpg')";
+
+    
+  }
 
 
-function activarVistaGeneral() {
-  // Oculta la vista detalle
-  detalle.style.display = "none";
 
-  // Muestra la galería
-  galeria.style.display = "flex";
-
-  // Aplica clase personalizada a cada columna
-  galeria.querySelectorAll(".col-6, .col-md-4, .col-lg-3").forEach(col => {
-    col.classList.remove("col-6", "col-md-4", "col-lg-3");
-    col.classList.add("vista-general");
-  });
-
-  // También ocultamos los elementos de búsqueda y resultado
-  mensajeNoEncontrado.style.display = "none";
-  btnVolverBusqueda.style.display = "none";
-}
 
 
 
@@ -1348,6 +1367,5 @@ function activarVistaGeneral() {
 </body>
 
 </html>
-
 
 

@@ -267,82 +267,83 @@
       font-weight: bold;
       border: 1px solid black;
     }
-.vista-general {
-  flex: 0 0 auto;
-  width: 16.66%; /* 6 columnas */
-  padding: 5px !important;
-}
 
-.vista-general .card,
-.vista-general .card-body,
-.vista-general .fondo {
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-}
+    .vista-general {
+      flex: 0 0 auto;
+      width: 16.66%;
+      /* 6 columnas */
+      padding: 5px !important;
+    }
 
-.vista-general h5,
-.vista-general p,
-.vista-general button,
-.vista-general .card-body {
-  display: none !important;
-}
+    .vista-general .card,
+    .vista-general .card-body,
+    .vista-general .fondo {
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
+    }
 
-.vista-general img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 0 !important;
-}
+    .vista-general h5,
+    .vista-general p,
+    .vista-general button,
+    .vista-general .card-body {
+      display: none !important;
+    }
 
-
-.vista-general h5,
-.vista-general p,
-.vista-general button,
-.vista-general .card-body,
-.vista-general .badge-numero {
-  display: none !important;
-}
+    .vista-general img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0 !important;
+    }
 
 
-
-
-.vista-general .row {
-  --bs-gutter-y: 0; /* quita el espacio vertical entre filas */
-  margin-bottom: 0;  /* quita margen inferior */
-}
-.vista-general .col {
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-.vista-general .card {
-  background: none;
-  border: none;
-  box-shadow: none;
-  margin: 0;
-}
-
-.vista-general .card-body {
-  padding: 0;
-}
-.vista-general img {
-  width: 100%;
-  max-width: 100px;
-  height: auto;
-  display: block;
-  margin: auto;
-  border-radius: 7px !important;
-}
+    .vista-general h5,
+    .vista-general p,
+    .vista-general button,
+    .vista-general .card-body,
+    .vista-general .badge-numero {
+      display: none !important;
+    }
 
 
 
 
+    .vista-general .row {
+      --bs-gutter-y: 0;
+      /* quita el espacio vertical entre filas */
+      margin-bottom: 0;
+      /* quita margen inferior */
+    }
 
+    .vista-general .col {
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
 
+    .vista-general .card {
+      background: none;
+      border: none;
+      box-shadow: none;
+      margin: 0;
+    }
+
+    .vista-general .card-body {
+      padding: 0;
+    }
+
+    .vista-general img {
+      width: 100%;
+      max-width: 100px;
+      height: auto;
+      display: block;
+      margin: auto;
+      border-radius: 7px !important;
+    }
   </style>
 </head>
 
@@ -354,11 +355,11 @@
 
 
 
-<button id="btnVistaGeneral" onclick="activarVistaGeneral()" 
-  style="position: fixed; top: 10px; left: 70px; z-index: 1001; font-weight: bold;
-         background-color: white; border: 2px solid black; border-radius: 8px; padding: 4px 8px;">
-  Vista general
-</button>
+  <button id="btnVistaGeneral" onclick="activarVistaGeneral()"
+    style="position: fixed; top: 10px; right: 70px; z-index: 1001; font-weight: bold;
+         background-color: rgb(38, 206, 192); border: 2px solid black;font-size: 11px; border-radius: 8px; padding: 4px 8px;">
+    Vista general
+  </button>
 
 
 
@@ -991,16 +992,16 @@
         imagenes: ["avion76.png", "img-segundarias/avion76.76.png"]
       },
 
-     {
+      {
         nombre: "Ram Work Truck ",
         descripcion: "MATCHBOX",
-             imagenes: ["carro77.png", "img-segundarias/carro77.77.png"]
+        imagenes: ["carro77.png", "img-segundarias/carro77.77.png"]
       },
 
 
 
 
-      
+
     ];
 
     while (carros.length < 100) {
@@ -1116,40 +1117,43 @@
       bannerIndex = (bannerIndex + 1) % banners.length; // Avanza
       banners[bannerIndex].style.display = "block"; // Muestra el siguiente
     }, 4000); // cada 3 segundos
-function volverAlInicio() {
-  // Oculta la vista detalle (si está visible)
-  detalle.style.display = "none";
+    function volverAlInicio() {
+      // Oculta la vista detalle (si está visible)
+      detalle.style.display = "none";
 
-  // Muestra la galería
-  galeria.style.display = "flex";
+      // Muestra la galería
+      galeria.style.display = "flex";
 
-  // Restaura clases normales si estabas en vista general
-  const columnas = galeria.querySelectorAll(".vista-general");
-  columnas.forEach(col => {
-    col.classList.remove("vista-general");
-    col.classList.add("col-6", "col-md-4", "col-lg-3");
-  });
+      // Restaura clases normales si estabas en vista general
+      const columnas = galeria.querySelectorAll(".vista-general");
+      columnas.forEach(col => {
+        col.classList.remove("vista-general");
+        col.classList.add("col-6", "col-md-4", "col-lg-3");
+      });
 
-  // Vuelve a mostrar la barra de búsqueda
-  const barraBusqueda = document.querySelector('.search-bar');
-  if (barraBusqueda) barraBusqueda.style.display = 'flex';
+      // Vuelve a mostrar la barra de búsqueda
+      const barraBusqueda = document.querySelector('.search-bar');
+      if (barraBusqueda) barraBusqueda.style.display = 'flex';
 
-  // Opcional: limpiar resultados previos de búsqueda o scroll
-  mensajeNoEncontrado.style.display = "none";
-  btnVolverBusqueda.style.display = "none";
+      // Opcional: limpiar resultados previos de búsqueda o scroll
+      mensajeNoEncontrado.style.display = "none";
+      btnVolverBusqueda.style.display = "none";
 
-  // Scroll arriba
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  document.querySelectorAll(".col-6, .col-md-4, .col-lg-3").forEach(col => {
-  col.style.display = "block";
+      // Scroll arriba
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.querySelectorAll(".col-6, .col-md-4, .col-lg-3").forEach(col => {
+        col.style.display = "block";
 
-  document.querySelectorAll(".card").forEach(card => {
-  card.style.pointerEvents = "auto";
-  card.style.cursor = "pointer";
-});
+        document.querySelectorAll(".card").forEach(card => {
+          card.style.pointerEvents = "auto";
+          card.style.cursor = "pointer";
 
-});
-}
+          document.querySelector(".fondo").style.backgroundImage = "url('h4.jpg')";
+
+        });
+
+      });
+    }
 
 
 
@@ -1272,7 +1276,7 @@ function volverAlInicio() {
       btnVolverBusqueda.style.display = "none";
 
       // Agrega un estado al historial cuando se muestra el detalle
-history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
+      history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
 
     }
 
@@ -1296,54 +1300,39 @@ history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
       document.getElementById("busqueda").value = "";
     }
 
-  function activarVistaGeneral() {
-    detalle.style.display = "none";
-    galeria.style.display = "flex";
+    function activarVistaGeneral() {
+      detalle.style.display = "none";
+      galeria.style.display = "flex";
 
-    // Oculta elementos de búsqueda
-    mensajeNoEncontrado.style.display = "none";
-    btnVolverBusqueda.style.display = "none";
-    document.getElementById("busqueda").value = "";
-    document.querySelector('.search-bar').style.display = "none";
+      // Oculta elementos de búsqueda
+      mensajeNoEncontrado.style.display = "none";
+      btnVolverBusqueda.style.display = "none";
+      document.getElementById("busqueda").value = "";
+      document.querySelector('.search-bar').style.display = "none";
 
-    // Aplica clases para vista general
-    document.querySelectorAll("#galeria .col-6, #galeria .col-md-4, #galeria .col-lg-3").forEach(col => {
-      col.classList.remove("col-6", "col-md-4", "col-lg-3");
-      col.classList.add("vista-general");
-    });
+      // Aplica clases para vista general
+      document.querySelectorAll("#galeria .col-6, #galeria .col-md-4, #galeria .col-lg-3").forEach(col => {
+        col.classList.remove("col-6", "col-md-4", "col-lg-3");
+        col.classList.add("vista-general");
+      });
 
-    // ❌ Elimina eventos de clic
-    document.querySelectorAll(".card").forEach(card => {
-      card.style.pointerEvents = "none"; // Desactiva los clics
-      card.style.cursor = "default";     // Quita el cursor de clic
-    });
+      // ❌ Elimina eventos de clic
+      document.querySelectorAll(".card").forEach(card => {
+        card.style.pointerEvents = "none"; // Desactiva los clics
+        card.style.cursor = "default";     // Quita el cursor de clic
+      });
 
-    // Scroll arriba
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    document.querySelector(".fondo").style.backgroundImage = "url('fondo2.jpg')";
-
-    
-  }
+      // Scroll arriba
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.querySelector(".fondo").style.backgroundImage = "url('fondo2.jpg')";
 
 
-
+    }
 
 
 
 
   </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1356,10 +1345,10 @@ history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
     });
 
     window.addEventListener('popstate', function (event) {
-  if (event.state && event.state.vista === 'detalle') {
-    mostrarGaleria();
-  }
-});
+      if (event.state && event.state.vista === 'detalle') {
+        mostrarGaleria();
+      }
+    });
 
   </script>
 
@@ -1367,5 +1356,3 @@ history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
 </body>
 
 </html>
-
-

@@ -267,6 +267,59 @@
       font-weight: bold;
       border: 1px solid black;
     }
+
+
+
+    .minimizada .card-body,
+.minimizada .badge-numero {
+  display: none !important;
+}
+
+.minimizada .card-img-top {
+  height: 60px !important;
+  object-fit: contain;
+}
+
+
+/* Oculta completamente la tarjeta en vista minimizada */
+.minimizada .card {
+  all: unset;
+  display: inline-block;
+  margin: 5px;
+}
+
+/* Solo muestra imagen pequeña */
+.minimizada .card img.card-img-top {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+/* Desactiva clics */
+.minimizada .card a {
+  pointer-events: none;
+  cursor: default;
+}
+.minimizada .row {
+  --bs-gutter-x: 0rem !important; /* Elimina el espacio horizontal entre columnas */
+  --bs-gutter-y: 0rem !important; /* Elimina el espacio vertical entre filas */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  row-gap: 0 !important;
+  column-gap: 0 !important;
+}
+
+.minimizada .col-6,
+.minimizada .col-md-4,
+.minimizada .col-lg-3 {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  margin-bottom: 4px !important;
+}
+
   </style>
 </head>
 
@@ -276,6 +329,9 @@
     <img src="inicio.png" alt="Inicio" title="Ir al inicio" style="border-radius: 50px;" />
   </a>
 
+<button id="btnVistaGeneral" onclick="activarVistaGeneral()" style="position: fixed; top: 10px; left: 60px; z-index: 1001; background-color: white; border: 2px solid black; border-radius: 10px; font-weight: bold; padding: 5px 10px; box-shadow: 2px 2px 6px rgba(0,0,0,0.5);">
+  Vista general
+</button>
 
   <div class="fondo"></div>
   <header>
@@ -906,7 +962,7 @@
         imagenes: ["avion76.png", "img-segundarias/avion76.76.png"]
       },
 
-     {
+      {
         nombre: "Ram Work Truck ",
         descripcion: "MATCHBOX",
              imagenes: ["carro77.png", "img-segundarias/carro77.77.png"]
@@ -915,7 +971,29 @@
 
 
 
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ];
 
     while (carros.length < 100) {
@@ -1196,10 +1274,23 @@ history.pushState({ vista: 'detalle', index: index }, '', '#detalle');
   }
 });
 
+
+function activarVistaGeneral() {
+  const galeria = document.getElementById("galeria");
+  galeria.classList.toggle("minimizada");
+
+  const btn = document.getElementById("btnVistaGeneral");
+  if (galeria.classList.contains("minimizada")) {
+    btn.textContent = "Vista completa";
+  } else {
+    btn.textContent = "Vista general";
+  }
+}
+
+
   </script>
 
 
 </body>
 
 </html>
-

@@ -345,15 +345,17 @@
 .vista-general .badge-numero {
   position: static !important;
   margin-top: 2px;
-  display: block !important;
-  text-align: center;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;  /* <--- esto alinea verticalmente */
   font-size: 6px;
   background-color: #ccc !important;
   color: black;
   border: 1px solid #000;
   border-radius: 6px;
-  width: auto;
-  height: auto;
+  width: 35px;
+  height: 12px;
+  padding: 0 4px; /* opcional: espaciado horizontal */
 }
 
 
@@ -1372,5 +1374,3 @@
 </body>
 
 </html>
-
-
